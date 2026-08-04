@@ -17,8 +17,9 @@ import csv, json, os, re, sys, unicodedata
 from collections import Counter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-SRC = sys.argv[1] if len(sys.argv) > 1 else \
-    "/root/.claude/uploads/9bf61167-01f3-5c87-8529-320e7d97b5d7/6ec306de-kohoku_hoikuen_data_final_with_url.csv"
+if len(sys.argv) < 2:
+    sys.exit("usage: python3 import_csv.py <園一覧のCSV>")
+SRC = sys.argv[1]
 OLD = os.path.join(HERE, "nurseries_geo.json")
 CHOME = os.path.join(HERE, "kohoku_chome.json")
 
