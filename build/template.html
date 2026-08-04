@@ -1,4 +1,4 @@
-<title>大倉山・菊名 保育園マップ</title>
+<title>港北区 保育園マップ</title>
 <style>
 /* ============================================================
    Palette: municipal wayfinding — cool blue-biased neutrals,
@@ -139,7 +139,14 @@ header{
   margin:0;letter-spacing:.03em;white-space:nowrap;
 }
 .brand .sub{font-size:10.5px;color:var(--ink-soft);margin-top:1px;letter-spacing:.02em;}
-.hstats{display:flex;gap:16px;flex:0 0 auto;}
+.hstats{display:flex;gap:16px;flex:0 0 auto;align-items:center;}
+.helpbtn{
+  width:26px;height:26px;border-radius:50%;flex:0 0 auto;
+  border:1px solid var(--line-strong);background:var(--surface);
+  color:var(--ink-soft);font-size:13px;font-weight:700;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+.helpbtn:hover{border-color:var(--accent);color:var(--accent);}
 .hstat{text-align:right;}
 .hstat b{display:block;font-family:var(--font-serif);font-size:16px;line-height:1.15;font-variant-numeric:tabular-nums;}
 .hstat span{font-size:9.5px;color:var(--ink-soft);letter-spacing:.04em;}
@@ -150,9 +157,19 @@ header{
   .hstat b{font-size:14px;}
 }
 
-#main{flex:1 1 auto;display:grid;grid-template-columns:392px 1fr;min-height:0;}
+#main{flex:1 1 auto;display:grid;grid-template-columns:var(--panel-w,440px) 6px 1fr;min-height:0;}
+#resizer{
+  cursor:col-resize;background:var(--line);
+  transition:background .15s;position:relative;
+}
+#resizer::after{
+  content:"";position:absolute;inset:0 -4px;
+}
+#resizer:hover,#resizer.dragging{background:var(--accent);}
+
 @media (max-width:900px){
   #main{grid-template-columns:1fr;grid-template-rows:46dvh 1fr;}
+  #resizer{display:none;}
   #panel{order:2;border-right:none;border-top:1px solid var(--line);}
   #mapwrap{order:1;}
   /* one scroll region, not a scroller inside a scroller — the filters must
@@ -187,6 +204,36 @@ header{
 }
 .field .clr:hover{background:var(--line);}
 .field .clr.on{display:flex;}
+
+.foldbar{
+  display:flex;align-items:center;gap:8px;width:100%;
+  padding:8px 10px;border:1px solid var(--line-strong);border-radius:var(--r-s);
+  background:var(--surface-2);color:var(--ink-mid);
+  font-size:12px;font-weight:700;cursor:pointer;
+}
+.foldbar:hover{border-color:var(--accent);color:var(--accent);}
+.foldbar .chev{margin-left:auto;transition:transform .18s;font-size:10px;}
+.foldbar[aria-expanded="true"] .chev{transform:rotate(180deg);}
+.foldbar .badge{
+  background:var(--accent);color:var(--accent-ink);border-radius:999px;
+  padding:1px 7px;font-size:10px;font-variant-numeric:tabular-nums;
+}
+#foldable{display:none;flex-direction:column;gap:10px;}
+#foldable.on{display:flex;}
+@media (prefers-reduced-motion:reduce){.foldbar .chev{transition:none;}}
+
+/* inline "?" that reveals a note only when asked */
+.qm{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:15px;height:15px;border-radius:50%;flex:0 0 auto;
+  border:1px solid var(--line-strong);background:var(--surface);
+  color:var(--ink-soft);font-size:10px;font-weight:700;line-height:1;
+  cursor:pointer;padding:0;vertical-align:middle;margin-left:5px;
+}
+.qm:hover{border-color:var(--accent);color:var(--accent);}
+.qm[aria-expanded="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);}
+.qnote{display:none;}
+.qnote.on{display:block;}
 
 .lbl{
   font-size:10px;font-weight:700;letter-spacing:.09em;
@@ -270,7 +317,7 @@ select.sel{
 
 .card{
   width:100%;text-align:left;display:block;
-  padding:10px 11px;margin-bottom:6px;cursor:pointer;
+  padding:9px 11px;margin-bottom:5px;cursor:pointer;
   border:1px solid var(--line);border-left:3px solid var(--bc,var(--b-n));
   border-radius:var(--r-s);background:var(--surface);
   transition:border-color .13s,box-shadow .13s,background .13s;
@@ -400,6 +447,25 @@ select.sel{
 .maphint.on{display:block;}
 
 /* ---------------- detail ---------------- */
+#infoModal{
+  position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.97);
+  width:min(560px,calc(100vw - 32px));max-height:82dvh;overflow-y:auto;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--r-l);
+  box-shadow:var(--shadow-l);z-index:60;padding:20px 22px 24px;
+  opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;
+}
+#infoModal.on{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1);}
+#infoModal h3{font-family:var(--font-serif);font-size:17px;margin:0 34px 14px 0;}
+#infoModal dl{margin:0;display:flex;flex-direction:column;gap:13px;}
+#infoModal dt{font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.04em;}
+#infoModal dd{margin:3px 0 0;font-size:12.5px;line-height:1.75;color:var(--ink-mid);}
+#infoModal .close{
+  position:absolute;top:14px;right:14px;width:28px;height:28px;border-radius:50%;
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-soft);
+  cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;
+}
+@media (prefers-reduced-motion:reduce){#infoModal{transition:none;}}
+
 #scrim{
   position:fixed;inset:0;background:rgba(12,16,24,.42);z-index:49;
   opacity:0;pointer-events:none;transition:opacity .22s;
@@ -493,13 +559,14 @@ select.sel{
     <div class="brand">
       <div class="glyph">保</div>
       <div>
-        <h1>大倉山・菊名 保育園マップ</h1>
-        <div class="sub">横浜市港北区／認可保育園 0歳児クラス 一次申請</div>
+        <h1>港北区 保育園マップ</h1>
+        <div class="sub">横浜市港北区／0歳児クラス 一次申請の倍率</div>
       </div>
     </div>
     <div class="hstats">
       <div class="hstat"><b id="stN" class="tnum">–</b><span>表示中</span></div>
       <div class="hstat"><b id="stMed" class="tnum">–</b><span>倍率の中央値</span></div>
+      <button type="button" class="helpbtn" id="helpBtn" aria-label="数字の見方と注意">?</button>
     </div>
   </header>
 
@@ -513,6 +580,13 @@ select.sel{
           <button class="clr" id="qClr" aria-label="検索をクリア">×</button>
         </div>
 
+        <button type="button" class="foldbar" id="foldBar" aria-expanded="true" aria-controls="foldable">
+          <span>絞り込み・並べ替え・地図</span>
+          <span class="badge" id="foldBadge" hidden>0</span>
+          <span class="chev">▲</span>
+        </button>
+
+        <div id="foldable" class="on">
         <div>
           <div class="lbl">地図</div>
           <div class="chips" id="chipsMap">
@@ -570,6 +644,7 @@ select.sel{
           <option value="apply_asc">申込者が少ない順</option>
           <option value="name">園名順</option>
         </select>
+        </div>
       </div>
 
       <div id="listwrap">
@@ -580,10 +655,9 @@ select.sel{
         <div id="list"></div>
       </div>
 
-      <div id="foot">
-        倍率＝一次申請の<b>申込数 ÷ 0歳児利用定員</b>。地図上の位置は住所の<b>町丁目の代表点</b>にもとづく概略で、建物の正確な位置ではありません。同じ町丁目の園は重ならないよう、代表点のまわりに細い線でつないで扇状に並べています。距離は直線距離に道のり係数1.3を掛けた概算（徒歩80m/分・自転車250m/分）です。<b>正確な位置と所要時間は各園の「Googleマップで見る」「ルート」から確認してください。</b>
-      </div>
     </div>
+
+    <div id="resizer" role="separator" aria-orientation="vertical" aria-label="一覧の幅を変える"></div>
 
     <div id="mapwrap">
       <svg id="map" role="img" aria-label="港北区の保育園マップ"></svg>
@@ -605,6 +679,22 @@ select.sel{
 </div>
 
 <div id="scrim"></div>
+<div id="infoModal" role="dialog" aria-modal="true" aria-labelledby="infoTitle" aria-hidden="true">
+  <button type="button" class="close" id="infoClose" aria-label="閉じる">✕</button>
+  <h3 id="infoTitle">数字の見方と注意</h3>
+  <dl>
+    <dt>倍率</dt>
+    <dd>一次申請時点の<b>申込数 ÷ 0歳児の利用定員</b>です。二次申請や年度途中の空き状況は反映していません。色分けは実際の分布（中央値6.0倍）に合わせて 3.0 / 6.0 / 9.0 倍で区切っています。</dd>
+    <dt>地図上の位置</dt>
+    <dd>住所の<b>町丁目の代表点</b>にもとづく概略で、建物の正確な位置ではありません。丁目まで分かる住所で 100〜300m、町までしか分からない住所では数百mずれることがあります。同じ町丁目の園は重ならないよう、代表点から細い線でつないで扇状に並べています。<br>「Googleマップ」に切り替えて住所を照合すると、この誤差は解消します。</dd>
+    <dt>距離・所要時間</dt>
+    <dd>直線距離に道のり係数1.3を掛け、徒歩80m/分・自転車250m/分で換算した概算です。実際の道のりとは異なります。起点と園が250m以内のときは、位置の誤差より近いので分単位の目安は出しません。<br><b>正確な所要時間は各園の「ルート」から確認してください。</b></dd>
+    <dt>種別</dt>
+    <dd>総定員19名以下を小規模保育園として推定したものです。公式の区分ではありません。元データで総定員が取れていない園は「不明」と表示しています。</dd>
+    <dt>出典</dt>
+    <dd>町丁目の代表点はデジタル庁「アドレス・ベース・レジストリ」をもとに Geolonia が作成した住所データ、園の詳細は横浜市 えんさがしサポートによります。個人が作成したもので横浜市とは関係ありません。申し込みの判断は必ず市の公式資料と各園への確認で行ってください。</dd>
+  </dl>
+</div>
 <aside id="detail" aria-hidden="true" aria-label="園の詳細">
   <div class="dhead">
     <div class="dgrip"></div>
@@ -839,7 +929,7 @@ function buildLegend(){
 /* ---------- list ---------- */
 function render(){
   if(!origin) fWalk=0;
-  syncWalkChips();
+  syncWalkChips(); updateFoldBadge();
   const items=visible();
   const list=document.getElementById("list");
   list.textContent="";
@@ -888,7 +978,9 @@ function render(){
   }
   drawMarkers();
 }
-const shortAddr = a => a.replace(/^〒\s*\d{3}-?\d{4}\s*/,"").replace(/^神奈川県横浜市/,"");
+const shortAddr = a => (a||"").trim()
+  ? a.replace(/^〒\s*\d{3}-?\d{4}\s*/,"").replace(/^神奈川県横浜市/,"")
+  : "住所の記載なし（地図に表示できません）";
 
 /* ============================================================
    MAP — schematic wayfinding map drawn from the data itself.
@@ -1238,16 +1330,16 @@ function openDetail(d){
   const dist=distOf(d);
   if(dist){
     const s=document.createElement("div"); s.className="sec";
-    s.innerHTML=`<div class="sl">起点「${escapeHtml(origin.label)}」から</div>`
+    s.innerHTML=`<div class="sl">起点「${escapeHtml(origin.label)}」から${qmark()}</div>`
       + (dist.near
         ? `<div class="grid2">`
           +`<div class="cell"><div class="cn">徒歩圏内</div><div class="cl">起点と同じ町丁目のため</div></div>`
           +`<div class="cell"><div class="cn">ごく近距離</div><div class="cl">目安を出すには近すぎます</div></div>`
-          +`</div><div class="note">起点とこの園は同じ町丁目の代表点にあり、両者の位置誤差より近いため、分単位の目安は出していません。実際の所要時間は下の「ルート」から確認してください。</div>`
+          +`</div><div class="note qnote">起点とこの園は同じ町丁目の代表点にあり、両者の位置誤差より近いため、分単位の目安は出していません。実際の所要時間は下の「ルート」から確認してください。</div>`
         : `<div class="grid2">`
           +`<div class="cell"><div class="cn">徒歩 ${dist.walk}分</div><div class="cl">道のり 約${fmtKm(dist.road)}</div></div>`
           +`<div class="cell"><div class="cn">自転車 ${dist.bike}分</div><div class="cl">直線 約${fmtKm(dist.straight)}</div></div>`
-          +`</div><div class="note">直線距離に道のり係数1.3を掛けた概算です。実際の所要時間は下の「ルート」から確認してください。</div>`);
+          +`</div><div class="note qnote">直線距離に道のり係数1.3を掛けた概算です。実際の所要時間は下の「ルート」から確認してください。</div>`);
     body.appendChild(s);
   }
 
@@ -1256,7 +1348,7 @@ function openDetail(d){
     +`<div class="cell"><div class="cn">${d.type}</div><div class="cl">種別（定員からの推定）</div></div>`
     +`<div class="cell"><div class="cn">${d.capacity??"–"}</div><div class="cl">総定員数</div></div>`
     +`<div class="cell"><div class="cn">${d.staff??"–"}</div><div class="cl">職員数</div></div>`
-    +`<div class="cell"><div class="cn">${d.parking??"–"}</div><div class="cl">駐車場</div></div>`
+    +`<div class="cell"><div class="cn">${d.parking??"–"}</div><div class="cl">${escapeHtml(d.parkingNote||"駐車場")}</div></div>`
     +`</div>`;
   body.appendChild(g);
 
@@ -1272,7 +1364,7 @@ function openDetail(d){
 
   const l=document.createElement("div"); l.className="sec";
   const tel=d.tel?d.tel.replace(/[^\d+]/g,""):null;
-  l.innerHTML=`<div class="sl">地図・ルート</div><div class="links">`
+  l.innerHTML=`<div class="sl">地図・ルート${qmark()}</div><div class="links">`
     +`<div class="lrow">`
     +`<a class="lnk pri" href="${gmapsSearch(d)}" target="_blank" rel="noopener">Googleマップで見る</a>`
     +`</div><div class="lrow">`
@@ -1288,7 +1380,7 @@ function openDetail(d){
     +(tel?`<a class="lnk" href="tel:${tel}">${escapeHtml(d.tel)}</a>`:`<span class="lnk off">電話番号なし</span>`)
     +(d.url?`<a class="lnk" href="${escapeAttr(d.url)}" target="_blank" rel="noopener">公式サイト</a>`:`<span class="lnk off">サイトなし</span>`)
     +`</div></div>`
-    +`<div class="note">${
+    +`<div class="note qnote">${
       (posOf(d)||{}).exact
         ? "この位置は住所をGoogleで照合した結果です。"
         : `この地図の位置は住所の${d.prec==="town"?"町（丁目の区分なし）":"町丁目"}の代表点で、${d.prec==="town"?"数百m":"100〜300m程度"}ずれることがあります。`
@@ -1307,9 +1399,16 @@ function closeDetail(){
   drawMarkers();
 }
 document.getElementById("dClose").addEventListener("click",closeDetail);
-scrim.addEventListener("click",closeDetail);
+scrim.addEventListener("click",()=>{
+  if(infoModal.classList.contains("on")) closeInfo();
+  else closeDetail();
+});
 document.addEventListener("keydown",e=>{
-  if(e.key==="Escape"){ if(detail.classList.contains("on")) closeDetail(); else if(pickMode) setPick(false); }
+  if(e.key==="Escape"){
+    if(infoModal.classList.contains("on")) closeInfo();
+    else if(detail.classList.contains("on")) closeDetail();
+    else if(pickMode) setPick(false);
+  }
 });
 const escapeHtml=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const escapeAttr=s=>escapeHtml(s).replace(/`/g,"&#96;");
@@ -1611,7 +1710,7 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
 /* One-time pass: ask Google for each address, cache locally. This is what
    lifts positions from "somewhere in this town" to the actual building. */
 async function geocodeWithGoogle(){
-  const todo=DATA.filter(d=>!GEOCACHE[d.address]);
+  const todo=DATA.filter(d=>d.address && !GEOCACHE[d.address]);
   if(!todo.length){ badge(null); return; }
   const gc=new google.maps.Geocoder();
   let ok=0, fail=0, retries=8;
@@ -1648,7 +1747,8 @@ async function geocodeWithGoogle(){
   badge(null);
   syncGoogleMarkers(); fitGoogle(); render();
   fitAll();   // positions moved, so the built-in view must be re-framed too
-  setGStat(`${exactCount()}／${DATA.length} 園の位置を住所から正確に取得しました。`
+  const placeable=DATA.filter(d=>d.address).length;
+  setGStat(`${exactCount()}／${placeable} 園の位置を住所から正確に取得しました。`
     + (fail?`（${fail} 件は取得できず、町丁目の代表点のままです）`:""), "ok");
 }
 
@@ -1718,8 +1818,93 @@ async function geocodeOrigin(text){
   }catch(e){ setGStat("住所を検索できませんでした。","err"); return false; }
 }
 
+/* ============================================================
+   Chrome: foldable filters, a draggable divider, and notes that stay
+   out of the way until asked for.
+   ============================================================ */
+let qmSeq=0;
+function qmark(){ return `<button type="button" class="qm" data-qm aria-expanded="false" aria-label="説明を表示">?</button>`; }
+
+/* one delegated handler covers every ? in the page */
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-qm]");
+  if(!b) return;
+  e.preventDefault();
+  const sec=b.closest(".sec");
+  const note=sec&&sec.querySelector(".qnote");
+  if(!note) return;
+  const on=note.classList.toggle("on");
+  b.setAttribute("aria-expanded",String(on));
+});
+
+/* --- foldable filter block --- */
+const foldBar=document.getElementById("foldBar"), foldable=document.getElementById("foldable");
+function setFold(open){
+  foldable.classList.toggle("on",open);
+  foldBar.setAttribute("aria-expanded",String(open));
+  try{ localStorage.setItem("hk_fold",open?"1":"0"); }catch(e){}
+  requestAnimationFrame(()=>{ resize(); drawAll(); });
+}
+foldBar.addEventListener("click",()=>setFold(!foldable.classList.contains("on")));
+function updateFoldBadge(){
+  let k=0;
+  if(fRatio!=="all") k++;
+  if(fType!=="all") k++;
+  if(fPark) k++;
+  if(fData) k++;
+  if(fWalk) k++;
+  const b=document.getElementById("foldBadge");
+  b.textContent=k; b.hidden=(k===0);
+}
+
+/* --- draggable divider --- */
+const resizer=document.getElementById("resizer");
+const PANEL_MIN=320, PANEL_MAX=760;
+function setPanelWidth(px){
+  const w=Math.max(PANEL_MIN,Math.min(PANEL_MAX,Math.round(px)));
+  document.documentElement.style.setProperty("--panel-w",w+"px");
+  try{ localStorage.setItem("hk_panelw",String(w)); }catch(e){}
+  return w;
+}
+if(resizer){
+  let rDrag=null;
+  resizer.addEventListener("pointerdown",e=>{
+    rDrag={x:e.clientX,w:document.getElementById("panel").getBoundingClientRect().width};
+    resizer.setPointerCapture(e.pointerId);
+    resizer.classList.add("dragging");
+    e.preventDefault();
+  });
+  resizer.addEventListener("pointermove",e=>{
+    if(!rDrag) return;
+    setPanelWidth(rDrag.w+(e.clientX-rDrag.x));
+  });
+  const endR=()=>{ if(!rDrag) return; rDrag=null; resizer.classList.remove("dragging");
+    requestAnimationFrame(()=>{ resize(); drawAll(); }); };
+  resizer.addEventListener("pointerup",endR);
+  resizer.addEventListener("pointercancel",endR);
+  resizer.addEventListener("dblclick",()=>{ setPanelWidth(440); requestAnimationFrame(()=>{resize();drawAll();}); });
+}
+
+/* --- info modal --- */
+const infoModal=document.getElementById("infoModal");
+function openInfo(){
+  infoModal.classList.add("on"); infoModal.setAttribute("aria-hidden","false");
+  scrim.classList.add("on");
+}
+function closeInfo(){
+  infoModal.classList.remove("on"); infoModal.setAttribute("aria-hidden","true");
+  if(!detail.classList.contains("on")) scrim.classList.remove("on");
+}
+document.getElementById("helpBtn").addEventListener("click",openInfo);
+document.getElementById("infoClose").addEventListener("click",closeInfo);
+
 /* ---------- init ---------- */
 buildChips(); buildWalkChips(); buildLegend(); syncMapChips();
+try{
+  const w=parseInt(localStorage.getItem("hk_panelw")||"",10);
+  if(w) setPanelWidth(w);
+  setFold(localStorage.getItem("hk_fold")==="1");   // list first; filters are one tap away
+}catch(e){ setFold(false); }
 if(gKey) setGStat("保存済みのAPIキーがあります。「Googleマップ」を選ぶと読み込みます。","");
 try{
   const saved=JSON.parse(localStorage.getItem("hk_origin")||"null");
