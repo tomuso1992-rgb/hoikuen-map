@@ -1,0 +1,1739 @@
+<title>大倉山・菊名 保育園マップ</title>
+<style>
+/* ============================================================
+   Palette: municipal wayfinding — cool blue-biased neutrals,
+   indigo accent for wayfinding chrome (origin, rings, controls),
+   a separate warm sequential ramp for competition level.
+   ============================================================ */
+:root{
+  --bg:#F4F6FA;
+  --surface:#FFFFFF;
+  --surface-2:#EDF0F6;
+  --line:#DDE3ED;
+  --line-strong:#C3CCDB;
+  --ink:#141A24;
+  --ink-mid:#3E4A5C;
+  --ink-soft:#5F6B7D;
+  --ink-faint:#939EAF;
+
+  --accent:#2B4A8C;
+  --accent-mid:#3D63AF;
+  --accent-soft:#E4EAF6;
+  --accent-ink:#FFFFFF;
+
+  /* competition ramp */
+  --b-a:#0F7A66;  --b-a-soft:#DDEFEA;
+  --b-b:#A5741A;  --b-b-soft:#F6EBD6;
+  --b-c:#C0552F;  --b-c-soft:#F8E4DB;
+  --b-d:#94254A;  --b-d-soft:#F7DEE6;
+  --b-n:#7E8A9B;  --b-n-soft:#E9EDF3;
+
+  --map-bg:#E7EBF2;
+  --map-grid:#D3DAE6;
+
+  --shadow-s:0 1px 2px rgba(20,26,36,.06),0 2px 6px rgba(20,26,36,.05);
+  --shadow-m:0 4px 16px rgba(20,26,36,.12);
+  --shadow-l:0 10px 40px rgba(20,26,36,.20);
+
+  --font-sans:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic","Noto Sans JP",Meiryo,system-ui,-apple-system,sans-serif;
+  --font-serif:"Hiragino Mincho ProN","Yu Mincho",YuMincho,"Noto Serif JP","MS PMincho",serif;
+
+  --head-h:56px;
+  --r-s:7px; --r-m:11px; --r-l:16px;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#0E1219;
+    --surface:#161C26;
+    --surface-2:#1E2632;
+    --line:#2A3341;
+    --line-strong:#3B4655;
+    --ink:#E9EDF4;
+    --ink-mid:#BCC6D4;
+    --ink-soft:#95A1B1;
+    --ink-faint:#6B7787;
+
+    --accent:#7C9EE0;
+    --accent-mid:#6A8DD2;
+    --accent-soft:#1D2941;
+    --accent-ink:#0E1219;
+
+    --b-a:#3BB79C;  --b-a-soft:#10312B;
+    --b-b:#DCA53C;  --b-b-soft:#332714;
+    --b-c:#EE8459;  --b-c-soft:#3A2118;
+    --b-d:#E86D8F;  --b-d-soft:#3A1A26;
+    --b-n:#8A96A6;  --b-n-soft:#232B37;
+
+    --map-bg:#121822;
+    --map-grid:#232C39;
+
+    --shadow-s:0 1px 2px rgba(0,0,0,.4),0 2px 6px rgba(0,0,0,.3);
+    --shadow-m:0 4px 16px rgba(0,0,0,.5);
+    --shadow-l:0 10px 40px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1219; --surface:#161C26; --surface-2:#1E2632;
+  --line:#2A3341; --line-strong:#3B4655;
+  --ink:#E9EDF4; --ink-mid:#BCC6D4; --ink-soft:#95A1B1; --ink-faint:#6B7787;
+  --accent:#7C9EE0; --accent-mid:#6A8DD2; --accent-soft:#1D2941; --accent-ink:#0E1219;
+  --b-a:#3BB79C; --b-a-soft:#10312B;
+  --b-b:#DCA53C; --b-b-soft:#332714;
+  --b-c:#EE8459; --b-c-soft:#3A2118;
+  --b-d:#E86D8F; --b-d-soft:#3A1A26;
+  --b-n:#8A96A6; --b-n-soft:#232B37;
+  --map-bg:#121822; --map-grid:#232C39;
+  --shadow-s:0 1px 2px rgba(0,0,0,.4),0 2px 6px rgba(0,0,0,.3);
+  --shadow-m:0 4px 16px rgba(0,0,0,.5);
+  --shadow-l:0 10px 40px rgba(0,0,0,.6);
+}
+:root[data-theme="light"]{
+  --bg:#F4F6FA; --surface:#FFFFFF; --surface-2:#EDF0F6;
+  --line:#DDE3ED; --line-strong:#C3CCDB;
+  --ink:#141A24; --ink-mid:#3E4A5C; --ink-soft:#5F6B7D; --ink-faint:#939EAF;
+  --accent:#2B4A8C; --accent-mid:#3D63AF; --accent-soft:#E4EAF6; --accent-ink:#FFFFFF;
+  --b-a:#0F7A66; --b-a-soft:#DDEFEA;
+  --b-b:#A5741A; --b-b-soft:#F6EBD6;
+  --b-c:#C0552F; --b-c-soft:#F8E4DB;
+  --b-d:#94254A; --b-d-soft:#F7DEE6;
+  --b-n:#7E8A9B; --b-n-soft:#E9EDF3;
+  --map-bg:#E7EBF2; --map-grid:#D3DAE6;
+  --shadow-s:0 1px 2px rgba(20,26,36,.06),0 2px 6px rgba(20,26,36,.05);
+  --shadow-m:0 4px 16px rgba(20,26,36,.12);
+  --shadow-l:0 10px 40px rgba(20,26,36,.20);
+}
+
+*{box-sizing:border-box;}
+html,body{height:100%;margin:0;padding:0;}
+body{
+  font-family:var(--font-sans);
+  background:var(--bg);
+  color:var(--ink);
+  -webkit-text-size-adjust:100%;
+  overflow:hidden;
+}
+button,input,select{font-family:inherit;color:inherit;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px;}
+.tnum{font-variant-numeric:tabular-nums;}
+
+/* ---------------- shell ---------------- */
+#shell{display:flex;flex-direction:column;height:100dvh;}
+
+header{
+  height:var(--head-h);flex:0 0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:0 16px;
+  background:var(--surface);
+  border-bottom:1px solid var(--line);
+  z-index:40;
+}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;}
+.brand .glyph{
+  flex:0 0 auto;width:26px;height:26px;border-radius:6px;
+  background:var(--accent);color:var(--accent-ink);
+  font-family:var(--font-serif);font-size:15px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.brand h1{
+  font-family:var(--font-serif);font-size:16px;font-weight:700;
+  margin:0;letter-spacing:.03em;white-space:nowrap;
+}
+.brand .sub{font-size:10.5px;color:var(--ink-soft);margin-top:1px;letter-spacing:.02em;}
+.hstats{display:flex;gap:16px;flex:0 0 auto;}
+.hstat{text-align:right;}
+.hstat b{display:block;font-family:var(--font-serif);font-size:16px;line-height:1.15;font-variant-numeric:tabular-nums;}
+.hstat span{font-size:9.5px;color:var(--ink-soft);letter-spacing:.04em;}
+@media (max-width:640px){
+  .brand h1{font-size:14px;}
+  .brand .sub{display:none;}
+  .hstats{gap:12px;}
+  .hstat b{font-size:14px;}
+}
+
+#main{flex:1 1 auto;display:grid;grid-template-columns:392px 1fr;min-height:0;}
+@media (max-width:900px){
+  #main{grid-template-columns:1fr;grid-template-rows:46dvh 1fr;}
+  #panel{order:2;border-right:none;border-top:1px solid var(--line);}
+  #mapwrap{order:1;}
+  /* one scroll region, not a scroller inside a scroller — the filters must
+     not be stranded in a nested overflow the thumb can't reach. */
+  #panel{overflow-y:auto;overscroll-behavior:contain;}
+  #listwrap{overflow:visible;flex:0 0 auto;}
+  #foot{position:static;}
+}
+
+/* ---------------- left panel ---------------- */
+#panel{
+  display:flex;flex-direction:column;min-height:0;
+  background:var(--surface);border-right:1px solid var(--line);
+}
+#controls{
+  flex:0 0 auto;padding:12px 14px;border-bottom:1px solid var(--line);
+  display:flex;flex-direction:column;gap:10px;
+}
+.field{position:relative;display:flex;}
+.field svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);opacity:.5;pointer-events:none;}
+.field input{
+  width:100%;padding:9px 30px 9px 32px;font-size:13.5px;
+  border:1px solid var(--line-strong);border-radius:var(--r-s);
+  background:var(--surface-2);color:var(--ink);
+}
+.field input::placeholder{color:var(--ink-faint);}
+.field .clr{
+  position:absolute;right:4px;top:50%;transform:translateY(-50%);
+  width:22px;height:22px;border:0;border-radius:50%;background:transparent;
+  color:var(--ink-soft);cursor:pointer;font-size:15px;line-height:1;
+  display:none;align-items:center;justify-content:center;
+}
+.field .clr:hover{background:var(--line);}
+.field .clr.on{display:flex;}
+
+.lbl{
+  font-size:10px;font-weight:700;letter-spacing:.09em;
+  color:var(--ink-soft);text-transform:none;
+  display:flex;align-items:center;gap:6px;
+}
+.lbl::after{content:"";flex:1;height:1px;background:var(--line);}
+
+.chips{display:flex;flex-wrap:wrap;gap:5px;}
+.chip{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:5px 10px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line-strong);background:var(--surface);
+  color:var(--ink-mid);font-size:11.5px;line-height:1.3;
+  transition:background .13s,border-color .13s,color .13s;
+}
+.chip .sw{width:8px;height:8px;border-radius:50%;flex:0 0 auto;}
+.chip .ct{font-size:10px;color:var(--ink-faint);font-variant-numeric:tabular-nums;}
+.chip:hover{border-color:var(--accent);}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);}
+.chip[aria-pressed="true"] .ct{color:var(--accent-ink);opacity:.75;}
+.chip[disabled]{opacity:.42;cursor:not-allowed;}
+.chip[disabled]:hover{border-color:var(--line-strong);}
+
+.exportbtn{
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-mid);
+  border-radius:var(--r-s);padding:5px 9px;font-size:10.5px;font-weight:700;
+  cursor:pointer;white-space:nowrap;
+}
+.exportbtn:hover{border-color:var(--accent);color:var(--accent);}
+.exportbtn[disabled]{opacity:.4;cursor:not-allowed;}
+
+select.sel{
+  width:100%;padding:8px 10px;font-size:12.5px;
+  border:1px solid var(--line-strong);border-radius:var(--r-s);
+  background:var(--surface);color:var(--ink);
+}
+
+/* origin block */
+.origin{
+  border:1px solid var(--line-strong);border-radius:var(--r-m);
+  background:var(--surface-2);padding:10px;display:flex;flex-direction:column;gap:8px;
+}
+.origin .ohead{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.origin .otitle{font-size:11.5px;font-weight:700;color:var(--ink-mid);display:flex;align-items:center;gap:6px;}
+.origin .otitle .pin{color:var(--accent);}
+.obtns{display:flex;gap:6px;flex-wrap:wrap;}
+.obtn{
+  flex:1 1 auto;min-width:0;padding:7px 8px;font-size:11.5px;font-weight:600;
+  border:1px solid var(--line-strong);border-radius:var(--r-s);
+  background:var(--surface);color:var(--ink-mid);cursor:pointer;white-space:nowrap;
+  transition:background .13s,border-color .13s,color .13s;
+}
+.obtn:hover{border-color:var(--accent);color:var(--accent);}
+.obtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);}
+.ostat{font-size:11px;line-height:1.5;color:var(--ink-soft);}
+.ostat b{color:var(--ink);font-weight:700;}
+.ostat.ok{color:var(--accent);}
+
+/* autocomplete */
+.ac{position:relative;}
+.aclist{
+  position:absolute;left:0;right:0;top:calc(100% + 4px);z-index:60;
+  background:var(--surface);border:1px solid var(--line-strong);
+  border-radius:var(--r-s);box-shadow:var(--shadow-m);
+  max-height:210px;overflow-y:auto;display:none;
+}
+.aclist.on{display:block;}
+.acitem{padding:8px 11px;font-size:12.5px;cursor:pointer;border-bottom:1px solid var(--line);}
+.acitem:last-child{border-bottom:0;}
+.acitem:hover,.acitem.hi{background:var(--accent-soft);color:var(--accent);}
+.acempty{padding:10px 11px;font-size:12px;color:var(--ink-faint);}
+
+/* ---------------- list ---------------- */
+#listwrap{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;min-height:0;padding:6px 10px 24px;}
+.countline{
+  display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+  padding:8px 4px 6px;font-size:11px;color:var(--ink-soft);
+}
+.countline b{font-family:var(--font-serif);font-size:14px;color:var(--ink);font-variant-numeric:tabular-nums;}
+
+.card{
+  width:100%;text-align:left;display:block;
+  padding:10px 11px;margin-bottom:6px;cursor:pointer;
+  border:1px solid var(--line);border-left:3px solid var(--bc,var(--b-n));
+  border-radius:var(--r-s);background:var(--surface);
+  transition:border-color .13s,box-shadow .13s,background .13s;
+}
+.card:hover{box-shadow:var(--shadow-s);border-color:var(--line-strong);border-left-color:var(--bc,var(--b-n));}
+.card[aria-current="true"]{background:var(--accent-soft);border-color:var(--accent);border-left-color:var(--bc,var(--b-n));}
+.card .r1{display:flex;align-items:flex-start;justify-content:space-between;gap:9px;}
+.card .nm{font-size:13px;font-weight:700;line-height:1.42;}
+.card .ad{font-size:10.5px;color:var(--ink-soft);margin-top:2px;line-height:1.45;}
+.rb{
+  flex:0 0 auto;text-align:center;padding:3px 7px;border-radius:var(--r-s);
+  background:var(--bsoft,var(--b-n-soft));color:var(--bc,var(--b-n));
+}
+.rb .v{font-family:var(--font-serif);font-size:14px;font-weight:700;line-height:1.1;font-variant-numeric:tabular-nums;}
+.rb .u{font-size:8.5px;letter-spacing:.05em;opacity:.85;}
+.tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px;align-items:center;}
+.tag{
+  font-size:9.5px;padding:2px 6px;border-radius:4px;
+  background:var(--surface-2);color:var(--ink-soft);white-space:nowrap;
+}
+.tag.sm{background:var(--accent-soft);color:var(--accent);}
+.tag.dist{background:var(--accent);color:var(--accent-ink);font-variant-numeric:tabular-nums;}
+.empty{padding:36px 16px;text-align:center;color:var(--ink-soft);font-size:12.5px;line-height:1.7;}
+
+/* ---------------- map ---------------- */
+#mapwrap{position:relative;min-height:0;background:var(--map-bg);overflow:hidden;}
+#map{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;display:block;}
+#map.dragging{cursor:grabbing;}
+#map.picking{cursor:crosshair;}
+#map text{user-select:none;-webkit-user-select:none;}
+.mk{cursor:pointer;}
+.mk circle.hit{fill:transparent;}
+.mk text{font-family:var(--font-sans);font-weight:700;font-variant-numeric:tabular-nums;pointer-events:none;}
+.chomelabel{
+  font-family:var(--font-serif);fill:var(--ink-faint);
+  font-size:10px;pointer-events:none;
+}
+.ringlabel{
+  font-family:var(--font-sans);fill:var(--accent);font-size:9.5px;
+  font-weight:700;pointer-events:none;opacity:.85;
+}
+
+.mapbtns{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:5px;z-index:12;}
+.mapbtn{
+  width:32px;height:32px;border-radius:var(--r-s);
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-mid);
+  font-size:15px;line-height:1;cursor:pointer;box-shadow:var(--shadow-s);
+  display:flex;align-items:center;justify-content:center;
+}
+.mapbtn:hover{border-color:var(--accent);color:var(--accent);}
+.mapbtn[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);}
+
+#legend{
+  position:absolute;left:10px;bottom:10px;z-index:12;
+  background:color-mix(in srgb,var(--surface) 92%,transparent);
+  border:1px solid var(--line);border-radius:var(--r-m);
+  padding:9px 11px;box-shadow:var(--shadow-s);
+  backdrop-filter:blur(6px);
+}
+#legend .lt{font-size:9.5px;font-weight:700;letter-spacing:.06em;color:var(--ink-soft);margin-bottom:6px;}
+#legend .lr{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--ink-mid);margin-bottom:3px;}
+#legend .lr:last-child{margin-bottom:0;}
+#legend .ld{width:9px;height:9px;border-radius:50%;flex:0 0 auto;}
+#scalebar{
+  position:absolute;right:10px;bottom:10px;z-index:12;
+  font-size:9.5px;color:var(--ink-mid);text-align:center;
+  background:color-mix(in srgb,var(--surface) 88%,transparent);
+  padding:3px 6px;border-radius:5px;border:1px solid var(--line);
+}
+#scalebar .bar{height:3px;background:var(--ink-mid);margin-top:3px;border-radius:2px;}
+@media (max-width:900px){
+  /* the map pane is short here — the legend shrinks to colour + range only */
+  #legend{padding:6px 8px;max-width:46%;}
+  #legend .lt{font-size:8.5px;margin-bottom:4px;}
+  #legend .lr{font-size:9px;margin-bottom:2px;gap:5px;}
+  #legend .ld{width:7px;height:7px;}
+  #legend .tone{display:none;}
+}
+
+#gmap{position:absolute;inset:0;display:none;}
+#gmap.on{display:block;}
+#map.off{display:none;}
+.gkeybox{
+  display:none;flex-direction:column;gap:7px;
+  border:1px solid var(--line-strong);border-radius:var(--r-m);
+  background:var(--surface-2);padding:10px;
+}
+.gkeybox.on{display:flex;}
+.gkeybox .row{display:flex;gap:6px;}
+.gkeybox input{
+  flex:1;min-width:0;padding:8px 10px;font-size:12.5px;
+  border:1px solid var(--line-strong);border-radius:var(--r-s);
+  background:var(--surface);color:var(--ink);
+}
+.gkeybox button{
+  padding:8px 13px;border-radius:var(--r-s);border:1px solid var(--accent);
+  background:var(--accent);color:var(--accent-ink);font-size:12px;font-weight:700;
+  cursor:pointer;white-space:nowrap;
+}
+.gkeybox .hint{font-size:10.5px;line-height:1.6;color:var(--ink-soft);}
+.gkeybox .hint a{color:var(--accent);}
+.gstat{font-size:11px;line-height:1.55;color:var(--ink-soft);}
+.gstat.err{color:var(--b-d);}
+.gstat.ok{color:var(--accent);}
+.gbadge{
+  position:absolute;left:10px;top:10px;z-index:13;
+  background:color-mix(in srgb,var(--surface) 92%,transparent);
+  border:1px solid var(--line);border-radius:999px;
+  padding:5px 11px;font-size:10.5px;color:var(--ink-mid);
+  box-shadow:var(--shadow-s);display:none;align-items:center;gap:6px;
+}
+.gbadge.on{display:flex;}
+.gbadge .spin{
+  width:9px;height:9px;border-radius:50%;
+  border:2px solid var(--line-strong);border-top-color:var(--accent);
+  animation:spin .7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+@media (prefers-reduced-motion:reduce){.gbadge .spin{animation:none;}}
+
+.maphint{
+  position:absolute;left:50%;top:10px;transform:translateX(-50%);z-index:14;
+  background:var(--accent);color:var(--accent-ink);
+  padding:7px 14px;border-radius:999px;font-size:11.5px;font-weight:600;
+  box-shadow:var(--shadow-m);white-space:nowrap;display:none;
+}
+.maphint.on{display:block;}
+
+/* ---------------- detail ---------------- */
+#scrim{
+  position:fixed;inset:0;background:rgba(12,16,24,.42);z-index:49;
+  opacity:0;pointer-events:none;transition:opacity .22s;
+}
+#scrim.on{opacity:1;pointer-events:auto;}
+#detail{
+  position:fixed;top:0;right:0;height:100dvh;width:396px;z-index:50;
+  background:var(--surface);border-left:1px solid var(--line);
+  box-shadow:var(--shadow-l);
+  transform:translateX(102%);transition:transform .26s cubic-bezier(.32,.72,.32,1);
+  display:flex;flex-direction:column;
+}
+#detail.on{transform:translateX(0);}
+@media (max-width:900px){
+  #detail{
+    top:auto;bottom:0;right:0;left:0;width:auto;height:86dvh;
+    border-left:0;border-top:1px solid var(--line);
+    border-radius:var(--r-l) var(--r-l) 0 0;
+    transform:translateY(102%);
+  }
+  #detail.on{transform:translateY(0);}
+}
+@media (prefers-reduced-motion:reduce){
+  #detail{transition:none;} #scrim{transition:none;}
+}
+.dhead{
+  flex:0 0 auto;padding:16px 46px 13px 16px;border-bottom:1px solid var(--line);position:relative;
+}
+.dgrip{display:none;}
+@media (max-width:900px){
+  .dgrip{
+    display:block;width:34px;height:4px;border-radius:2px;background:var(--line-strong);
+    margin:0 auto 9px;
+  }
+  .dhead{padding-top:9px;}
+}
+.dclose{
+  position:absolute;top:13px;right:12px;width:28px;height:28px;border-radius:50%;
+  border:1px solid var(--line-strong);background:var(--surface);color:var(--ink-soft);
+  cursor:pointer;font-size:14px;line-height:1;display:flex;align-items:center;justify-content:center;
+}
+.dclose:hover{background:var(--surface-2);color:var(--ink);}
+.dhead h2{font-family:var(--font-serif);font-size:19px;font-weight:700;margin:0 0 5px;line-height:1.4;text-wrap:balance;}
+.dhead .da{font-size:11.5px;color:var(--ink-soft);line-height:1.55;}
+.dbody{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;padding:14px 16px 28px;}
+
+.dhero{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 15px;border-radius:var(--r-m);margin-bottom:14px;
+  background:var(--bsoft,var(--b-n-soft));
+}
+.dhero .hv{font-family:var(--font-serif);font-size:32px;font-weight:700;line-height:1;color:var(--bc,var(--b-n));font-variant-numeric:tabular-nums;}
+.dhero .hl{font-size:10.5px;margin-top:5px;color:var(--bc,var(--b-n));font-weight:700;letter-spacing:.03em;}
+.dhero .hr{text-align:right;font-size:11px;color:var(--ink-mid);line-height:1.7;font-variant-numeric:tabular-nums;}
+.dhero .hr b{font-family:var(--font-serif);font-size:14px;color:var(--ink);}
+
+.sec{margin-bottom:15px;}
+.sec>.sl{font-size:9.5px;font-weight:700;letter-spacing:.09em;color:var(--ink-faint);margin-bottom:6px;}
+.sec>.sv{font-size:13px;line-height:1.7;color:var(--ink-mid);}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+.cell{background:var(--surface-2);border-radius:var(--r-s);padding:9px 10px;}
+.cell .cn{font-family:var(--font-serif);font-size:16px;font-weight:700;line-height:1.2;font-variant-numeric:tabular-nums;}
+.cell .cl{font-size:9.5px;color:var(--ink-soft);margin-top:2px;}
+.policy{
+  background:var(--accent-soft);border-radius:var(--r-m);padding:11px 13px;
+  font-size:12.5px;line-height:1.8;color:var(--ink-mid);
+}
+.links{display:flex;flex-direction:column;gap:6px;}
+.lrow{display:flex;gap:6px;}
+.lnk{
+  flex:1 1 0;min-width:0;display:flex;align-items:center;justify-content:center;gap:5px;
+  padding:10px 8px;border-radius:var(--r-s);font-size:12px;font-weight:700;
+  text-decoration:none;border:1px solid var(--line-strong);
+  background:var(--surface);color:var(--ink-mid);white-space:nowrap;
+}
+.lnk:hover{border-color:var(--accent);color:var(--accent);}
+.lnk.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);}
+.lnk.pri:hover{background:var(--accent-mid);color:var(--accent-ink);}
+.lnk.off{opacity:.4;pointer-events:none;}
+.note{font-size:10px;line-height:1.65;color:var(--ink-faint);margin-top:6px;}
+
+#foot{
+  flex:0 0 auto;padding:9px 14px;border-top:1px solid var(--line);
+  font-size:9.5px;line-height:1.65;color:var(--ink-faint);background:var(--surface);
+}
+#foot b{color:var(--ink-soft);font-weight:700;}
+</style>
+
+<div id="shell">
+  <header>
+    <div class="brand">
+      <div class="glyph">保</div>
+      <div>
+        <h1>大倉山・菊名 保育園マップ</h1>
+        <div class="sub">横浜市港北区／認可保育園 0歳児クラス 一次申請</div>
+      </div>
+    </div>
+    <div class="hstats">
+      <div class="hstat"><b id="stN" class="tnum">–</b><span>表示中</span></div>
+      <div class="hstat"><b id="stMed" class="tnum">–</b><span>倍率の中央値</span></div>
+    </div>
+  </header>
+
+  <div id="main">
+    <div id="panel">
+      <div id="controls">
+
+        <div class="field">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20.5 20.5 16.7 16.7"/></svg>
+          <input id="q" type="search" placeholder="園名・住所・方針で検索" autocomplete="off">
+          <button class="clr" id="qClr" aria-label="検索をクリア">×</button>
+        </div>
+
+        <div>
+          <div class="lbl">地図</div>
+          <div class="chips" id="chipsMap">
+            <button type="button" class="chip" data-m="builtin" aria-pressed="true">内蔵地図</button>
+            <button type="button" class="chip" data-m="google" aria-pressed="false">Googleマップ</button>
+          </div>
+          <div class="gkeybox" id="gkeyBox">
+            <div class="row">
+              <input id="gkeyInput" type="password" placeholder="Google Maps APIキー" autocomplete="off" spellcheck="false">
+              <button type="button" id="gkeySave">使う</button>
+            </div>
+            <div class="hint">キーはこの端末のブラウザにだけ保存され、ファイルにも記録されません。Googleマップを使うと、各園の位置が住所そのものから正確に取り直されます。</div>
+          </div>
+          <div class="gstat" id="gStat" style="margin-top:6px;"></div>
+        </div>
+
+        <div class="origin">
+          <div class="ohead">
+            <div class="otitle"><span class="pin">◎</span>起点からの距離</div>
+          </div>
+          <div class="ac">
+            <div class="field">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+              <input id="oq" type="text" placeholder="住所（町丁目）を入力　例：大倉山3丁目" autocomplete="off">
+              <button class="clr" id="oClr" aria-label="起点をクリア">×</button>
+            </div>
+            <div class="aclist" id="acList"></div>
+          </div>
+          <div class="obtns">
+            <button class="obtn" id="btnPick" aria-pressed="false">地図をタップして指定</button>
+            <button class="obtn" id="btnGeo">現在地</button>
+          </div>
+          <div class="ostat" id="oStat">起点を決めると、園ごとの徒歩・自転車の目安と距離順の並べ替えが使えます。</div>
+          <div>
+            <div class="lbl" style="margin-bottom:5px;">徒歩の目安でしぼる</div>
+            <div class="chips" id="chipsWalk"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="lbl">0歳児クラスの倍率</div>
+          <div class="chips" id="chipsRatio"></div>
+        </div>
+
+        <div>
+          <div class="lbl">園の種別・条件</div>
+          <div class="chips" id="chipsType"></div>
+        </div>
+
+        <select class="sel" id="sort" aria-label="並べ替え">
+          <option value="ratio_asc">倍率が低い順（入りやすい）</option>
+          <option value="ratio_desc">倍率が高い順（激戦）</option>
+          <option value="dist_asc">起点から近い順</option>
+          <option value="cap_desc">0歳児の定員が多い順</option>
+          <option value="apply_asc">申込者が少ない順</option>
+          <option value="name">園名順</option>
+        </select>
+      </div>
+
+      <div id="listwrap">
+        <div class="countline">
+          <span><b id="cN">0</b> 件表示<span id="cTot" style="margin-left:6px;"></span></span>
+          <button type="button" class="exportbtn" id="exportBtn" title="いま表示している園だけをCSVに書き出します。Googleマイマップにそのまま読み込めます。">CSV書き出し</button>
+        </div>
+        <div id="list"></div>
+      </div>
+
+      <div id="foot">
+        倍率＝一次申請の<b>申込数 ÷ 0歳児利用定員</b>。地図上の位置は住所の<b>町丁目の代表点</b>にもとづく概略で、建物の正確な位置ではありません。同じ町丁目の園は重ならないよう、代表点のまわりに細い線でつないで扇状に並べています。距離は直線距離に道のり係数1.3を掛けた概算（徒歩80m/分・自転車250m/分）です。<b>正確な位置と所要時間は各園の「Googleマップで見る」「ルート」から確認してください。</b>
+      </div>
+    </div>
+
+    <div id="mapwrap">
+      <svg id="map" role="img" aria-label="港北区の保育園マップ"></svg>
+      <div id="gmap"></div>
+      <div class="gbadge" id="gBadge"><span class="spin"></span><span id="gBadgeText"></span></div>
+      <div class="maphint" id="mapHint">自宅の位置を地図上でタップしてください</div>
+      <div class="mapbtns">
+        <button class="mapbtn" id="zIn" aria-label="拡大">＋</button>
+        <button class="mapbtn" id="zOut" aria-label="縮小">−</button>
+        <button class="mapbtn" id="zFit" aria-label="全体を表示">⤢</button>
+      </div>
+      <div id="legend">
+        <div class="lt">0歳児クラス 倍率</div>
+        <div id="legendRows"></div>
+      </div>
+      <div id="scalebar"><span id="scaleTxt">–</span><div class="bar" id="scaleBar" style="width:60px"></div></div>
+    </div>
+  </div>
+</div>
+
+<div id="scrim"></div>
+<aside id="detail" aria-hidden="true" aria-label="園の詳細">
+  <div class="dhead">
+    <div class="dgrip"></div>
+    <button class="dclose" id="dClose" aria-label="閉じる">✕</button>
+    <h2 id="dName"></h2>
+    <div class="da" id="dAddr"></div>
+  </div>
+  <div class="dbody" id="dBody"></div>
+</aside>
+
+<script>
+"use strict";
+const NURSERIES = /*__NURSERIES__*/[];
+const CHOME = /*__CHOME__*/[];
+
+/* ---------- competition bands (built from the real distribution:
+   median 5.5x, so the old "2x+" bucket held 41 of 43 parks) ---------- */
+const BANDS = [
+  {k:"a", lo:0,   hi:3,   label:"3.0倍未満",  tone:"比較的入りやすい", c:"--b-a", s:"--b-a-soft"},
+  {k:"b", lo:3,   hi:6,   label:"3.0〜6.0倍", tone:"平均的",          c:"--b-b", s:"--b-b-soft"},
+  {k:"c", lo:6,   hi:9,   label:"6.0〜9.0倍", tone:"激戦",            c:"--b-c", s:"--b-c-soft"},
+  {k:"d", lo:9,   hi:1e9, label:"9.0倍以上",  tone:"超激戦",          c:"--b-d", s:"--b-d-soft"}
+];
+const BAND_ND = {k:"nd", label:"データなし", tone:"倍率の公表なし", c:"--b-n", s:"--b-n-soft"};
+const bandOf = r => r==null ? BAND_ND : (BANDS.find(b=>r>=b.lo && r<b.hi) || BANDS[BANDS.length-1]);
+const cssv = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+
+/* ---------- data prep ---------- */
+const DATA = NURSERIES.map(d=>{
+  const ratio = (d.cap0>0 && d.apply0!=null) ? d.apply0/d.cap0 : null;
+  const type = d.capacity==null ? "不明" : (d.capacity<=19 ? "小規模保育園" : "保育園");
+  return Object.assign({}, d, {ratio, type, band:bandOf(ratio)});
+});
+
+/* Every address only resolves to its town's representative point, so parks in
+   the same town share one coordinate. They are fanned out around that point in
+   SCREEN space at draw time — a world-space offset would collapse back into an
+   untappable pile whenever the map is zoomed out. `lat`/`lng` stay untouched,
+   so distances are always measured from the real representative point. */
+/* Google Maps mode geocodes each address for real; those results win over the
+   town fallback everywhere — map, distances and the accuracy wording alike. */
+let GEOCACHE={};
+try{ GEOCACHE=JSON.parse(localStorage.getItem("hk_geo")||"{}"); }catch(e){}
+const saveGeo=()=>{ try{ localStorage.setItem("hk_geo",JSON.stringify(GEOCACHE)); }catch(e){} };
+
+function posOf(d){
+  const g=GEOCACHE[d.address];
+  if(g && typeof g.lat==="number") return {lat:g.lat,lng:g.lng,exact:true};
+  if(d.lat==null) return null;
+  return {lat:d.lat,lng:d.lng,exact:false};
+}
+const exactCount = () => DATA.filter(d=>{const p=posOf(d);return p&&p.exact;}).length;
+
+/* Parks that still share one fallback point are fanned out around it in screen
+   space; anything geocoded exactly stands on its own. */
+function layout(){
+  const buckets={}, out=new Map(), r=markerRadius();
+  for(const d of DATA){
+    const p=posOf(d);
+    if(!p){ out.set(d.id,null); continue; }
+    const key=p.exact ? "x"+d.id : p.lat.toFixed(5)+","+p.lng.toFixed(5);
+    (buckets[key]=buckets[key]||[]).push({d,p});
+  }
+  for(const list of Object.values(buckets)){
+    const n=list.length;
+    list.forEach((it,i)=>{
+      let dx=0,dy=0;
+      if(n>1){
+        const R=Math.max(r+4,(r*2+5)/(2*Math.sin(Math.PI/n)));
+        const a=(i/n)*Math.PI*2-Math.PI/2;
+        dx=R*Math.cos(a); dy=R*Math.sin(a);
+      }
+      out.set(it.d.id,{lat:it.p.lat,lng:it.p.lng,exact:it.p.exact,dx,dy,n});
+    });
+  }
+  return out;
+}
+let LAYOUT=new Map();
+
+/* ---------- geometry ---------- */
+const R_EARTH = 6371000;
+function haversine(a1,o1,a2,o2){
+  const dA=(a2-a1)*Math.PI/180, dO=(o2-o1)*Math.PI/180;
+  const s=Math.sin(dA/2)**2 + Math.cos(a1*Math.PI/180)*Math.cos(a2*Math.PI/180)*Math.sin(dO/2)**2;
+  return R_EARTH*2*Math.atan2(Math.sqrt(s),Math.sqrt(1-s));
+}
+const DETOUR=1.3, WALK_MPM=80, BIKE_MPM=250;
+let origin=null;           // {lat,lng,label,kind}
+
+function distOf(d){
+  const p=posOf(d);
+  if(!origin || !p) return null;
+  const straight = haversine(origin.lat,origin.lng,p.lat,p.lng);
+  const road = straight*DETOUR;
+  /* Inside ~250m the two representative points are closer together than the
+     error on either of them, so a minute figure would be invented precision.
+     Once both ends are geocoded exactly there is no such floor. */
+  const near = straight < 250 && !(p.exact && origin.exact);
+  return {
+    straight, road, near,
+    walk: Math.max(1,Math.round(road/WALK_MPM)),
+    bike: Math.max(1,Math.round(road/BIKE_MPM))
+  };
+}
+const fmtKm = m => m<950 ? Math.round(m/10)*10+"m" : (m/1000).toFixed(m<9500?1:0)+"km";
+
+/* ---------- state ---------- */
+let fRatio="all", fType="all", fPark=false, fData=false, fWalk=0, q="", sortBy="ratio_asc", selId=null, pickMode=false;
+
+function passes(d){
+  if(fWalk && origin){
+    const dd=distOf(d);
+    if(!dd || dd.walk>fWalk) return false;
+  }
+  if(q){
+    const hay=(d.name+" "+d.address+" "+(d.policy||"")+" "+(d.town||"")).toLowerCase();
+    if(!hay.includes(q.toLowerCase())) return false;
+  }
+  if(fPark && d.parking!=="あり") return false;
+  if(fData && d.ratio==null) return false;
+  if(fType==="小規模保育園" && d.type!=="小規模保育園") return false;
+  if(fType==="保育園" && d.type!=="保育園") return false;
+  if(fRatio!=="all" && d.band.k!==fRatio) return false;
+  return true;
+}
+function sorted(arr){
+  const a=[...arr];
+  const nl=(x,y)=>x.name.localeCompare(y.name,"ja");
+  const byR=(s)=>(x,y)=>{
+    if(x.ratio==null&&y.ratio==null) return nl(x,y);
+    if(x.ratio==null) return 1;
+    if(y.ratio==null) return -1;
+    return s*(x.ratio-y.ratio) || nl(x,y);
+  };
+  if(sortBy==="ratio_asc") a.sort(byR(1));
+  else if(sortBy==="ratio_desc") a.sort(byR(-1));
+  else if(sortBy==="dist_asc") a.sort((x,y)=>{
+    const dx=distOf(x), dy=distOf(y);
+    if(!dx&&!dy) return nl(x,y);
+    if(!dx) return 1; if(!dy) return -1;
+    return dx.road-dy.road;
+  });
+  else if(sortBy==="cap_desc") a.sort((x,y)=>(y.cap0||0)-(x.cap0||0) || nl(x,y));
+  else if(sortBy==="apply_asc") a.sort((x,y)=>{
+    if(x.apply0==null) return 1; if(y.apply0==null) return -1;
+    return x.apply0-y.apply0 || nl(x,y);
+  });
+  else a.sort(nl);
+  return a;
+}
+const visible = () => sorted(DATA.filter(passes));
+
+/* ---------- chips ---------- */
+function buildChips(){
+  const rc=document.getElementById("chipsRatio");
+  const mk=(key,label,tone,colorVar,count)=>{
+    const b=document.createElement("button");
+    b.type="button"; b.className="chip"; b.dataset.k=key;
+    b.setAttribute("aria-pressed", String(fRatio===key));
+    b.innerHTML = (colorVar?`<span class="sw" style="background:var(${colorVar})"></span>`:"")
+      + `<span>${label}</span><span class="ct">${count}</span>`;
+    if(tone) b.title=tone;
+    b.addEventListener("click",()=>{ fRatio=key; syncChips(); render(); });
+    return b;
+  };
+  rc.appendChild(mk("all","すべて",null,null,DATA.length));
+  BANDS.forEach(b=>rc.appendChild(mk(b.k,b.label,b.tone,b.c,DATA.filter(d=>d.band.k===b.k).length)));
+  const nd=DATA.filter(d=>d.ratio==null).length;
+  if(nd) rc.appendChild(mk("nd","データなし",null,BAND_ND.c,nd));
+
+  const tc=document.getElementById("chipsType");
+  const mkT=(label,on,fn,count)=>{
+    const b=document.createElement("button");
+    b.type="button"; b.className="chip"; b.setAttribute("aria-pressed",String(on));
+    b.innerHTML=`<span>${label}</span><span class="ct">${count}</span>`;
+    b.addEventListener("click",()=>{ fn(); syncChips(); render(); });
+    return b;
+  };
+  tc.appendChild(mkT("すべて",fType==="all",()=>fType="all",DATA.length));
+  tc.appendChild(mkT("保育園",fType==="保育園",()=>fType="保育園",DATA.filter(d=>d.type==="保育園").length));
+  tc.appendChild(mkT("小規模",fType==="小規模保育園",()=>fType="小規模保育園",DATA.filter(d=>d.type==="小規模保育園").length));
+  tc.appendChild(mkT("駐車場あり",fPark,()=>fPark=!fPark,DATA.filter(d=>d.parking==="あり").length));
+  tc.appendChild(mkT("倍率データあり",fData,()=>fData=!fData,DATA.filter(d=>d.ratio!=null).length));
+}
+const WALK_STEPS=[0,5,10,15,20];
+function buildWalkChips(){
+  const el2=document.getElementById("chipsWalk");
+  el2.textContent="";
+  WALK_STEPS.forEach(m=>{
+    const b=document.createElement("button");
+    b.type="button"; b.className="chip"; b.dataset.w=String(m);
+    b.innerHTML=`<span>${m?("徒歩"+m+"分以内"):"すべて"}</span><span class="ct"></span>`;
+    b.addEventListener("click",()=>{ if(b.disabled) return; fWalk=m; render(); });
+    el2.appendChild(b);
+  });
+  syncWalkChips();
+}
+function syncWalkChips(){
+  document.querySelectorAll("#chipsWalk .chip").forEach(c=>{
+    const m=+c.dataset.w;
+    c.disabled=!origin;
+    c.setAttribute("aria-pressed",String(origin && fWalk===m));
+    const ct=c.querySelector(".ct");
+    ct.textContent = (origin && m)
+      ? String(DATA.filter(d=>{const dd=distOf(d);return dd&&dd.walk<=m;}).length) : "";
+  });
+  document.getElementById("chipsWalk").title =
+    origin ? "" : "先に起点を決めると使えます";
+}
+
+function syncChips(){
+  document.querySelectorAll("#chipsRatio .chip").forEach(c=>c.setAttribute("aria-pressed",String(c.dataset.k===fRatio)));
+  const t=document.querySelectorAll("#chipsType .chip");
+  t[0].setAttribute("aria-pressed",String(fType==="all"));
+  t[1].setAttribute("aria-pressed",String(fType==="保育園"));
+  t[2].setAttribute("aria-pressed",String(fType==="小規模保育園"));
+  t[3].setAttribute("aria-pressed",String(fPark));
+  t[4].setAttribute("aria-pressed",String(fData));
+}
+function buildLegend(){
+  const el=document.getElementById("legendRows");
+  BANDS.forEach(b=>{
+    const r=document.createElement("div"); r.className="lr";
+    r.innerHTML=`<span class="ld" style="background:var(${b.c})"></span><span>${b.label}<span class="tone" style="color:var(--ink-faint)">／${b.tone}</span></span>`;
+    el.appendChild(r);
+  });
+  const r=document.createElement("div"); r.className="lr";
+  r.innerHTML=`<span class="ld" style="background:var(${BAND_ND.c})"></span><span>データなし</span>`;
+  el.appendChild(r);
+}
+
+/* ---------- list ---------- */
+function render(){
+  if(!origin) fWalk=0;
+  syncWalkChips();
+  const items=visible();
+  const list=document.getElementById("list");
+  list.textContent="";
+  document.getElementById("exportBtn").disabled=!items.length;
+  document.getElementById("cN").textContent=items.length;
+  document.getElementById("cTot").textContent=`全 ${DATA.length} 件中`;
+  document.getElementById("stN").textContent=items.length;
+  const rs=items.filter(d=>d.ratio!=null).map(d=>d.ratio).sort((a,b)=>a-b);
+  document.getElementById("stMed").textContent = rs.length
+    ? (rs.length%2 ? rs[(rs.length-1)/2] : (rs[rs.length/2-1]+rs[rs.length/2])/2).toFixed(1)+"倍" : "–";
+
+  if(!items.length){
+    const e=document.createElement("div"); e.className="empty";
+    e.textContent="条件に合う園がありません。フィルターを緩めるか、検索語を短くしてみてください。";
+    list.appendChild(e);
+  }
+  for(const d of items){
+    const b=d.band;
+    const card=document.createElement("button");
+    card.type="button"; card.className="card"; card.dataset.id=d.id;
+    card.style.setProperty("--bc",`var(${b.c})`);
+    card.style.setProperty("--bsoft",`var(${b.s})`);
+    if(d.id===selId) card.setAttribute("aria-current","true");
+
+    const r1=document.createElement("div"); r1.className="r1";
+    const left=document.createElement("div");
+    const nm=document.createElement("div"); nm.className="nm"; nm.textContent=d.name;
+    const ad=document.createElement("div"); ad.className="ad"; ad.textContent=shortAddr(d.address);
+    left.append(nm,ad);
+    const rb=document.createElement("div"); rb.className="rb";
+    rb.innerHTML=`<div class="v">${d.ratio!=null?d.ratio.toFixed(1):"–"}</div><div class="u">${d.ratio!=null?"倍":"データなし"}</div>`;
+    r1.append(left,rb);
+
+    const tags=document.createElement("div"); tags.className="tags";
+    const add=(t,cls)=>{const s=document.createElement("span");s.className="tag"+(cls?" "+cls:"");s.textContent=t;tags.appendChild(s);};
+    const dist=distOf(d);
+    if(dist) add(dist.near?"起点とほぼ同じ地区":`徒歩${dist.walk}分・自転車${dist.bike}分`,"dist");
+    add(d.type, d.type==="小規模保育園"?"sm":"");
+    if(d.cap0!=null) add(`0歳定員 ${d.cap0}`);
+    if(d.apply0!=null) add(`申込 ${d.apply0}`);
+    if(d.parking==="あり") add("駐車場あり");
+
+    card.append(r1,tags);
+    card.addEventListener("click",()=>select(d.id,true));
+    list.appendChild(card);
+  }
+  drawMarkers();
+}
+const shortAddr = a => a.replace(/^〒\s*\d{3}-?\d{4}\s*/,"").replace(/^神奈川県横浜市/,"");
+
+/* ============================================================
+   MAP — schematic wayfinding map drawn from the data itself.
+   No tile server: chome centroids give the geographic frame.
+   ============================================================ */
+const svg=document.getElementById("map");
+const NS="http://www.w3.org/2000/svg";
+const el=(n,a={})=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
+
+const gGrid=el("g"), gChome=el("g"), gRings=el("g"), gMk=el("g"), gOrigin=el("g");
+svg.append(gGrid,gChome,gRings,gMk,gOrigin);
+
+const lat0=35.5155, lng0=139.6265;                 // frame centre (大倉山/菊名 area)
+const MPD=111320, kx=Math.cos(lat0*Math.PI/180);
+const toM = (lat,lng)=>({x:(lng-lng0)*MPD*kx, y:-(lat-lat0)*MPD});
+const toLL = (x,y)=>({lat:lat0-y/MPD, lng:lng0+x/(MPD*kx)});
+
+let view={scale:0.13, cx:0, cy:0};                  // px per metre, centre in metres
+let W=800,H=600;
+const proj=(lat,lng)=>{const m=toM(lat,lng);return{x:(m.x-view.cx)*view.scale+W/2, y:(m.y-view.cy)*view.scale+H/2};};
+const unproj=(px,py)=>toLL((px-W/2)/view.scale+view.cx,(py-H/2)/view.scale+view.cy);
+
+function resize(){
+  const r=svg.getBoundingClientRect();
+  W=Math.max(1,r.width); H=Math.max(1,r.height);
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  drawAll();
+}
+
+function fitAll(){
+  const pts=DATA.map(d=>posOf(d)).filter(Boolean).map(p=>toM(p.lat,p.lng));
+  if(origin) pts.push(toM(origin.lat,origin.lng));
+  if(!pts.length) return;
+  const xs=pts.map(p=>p.x), ys=pts.map(p=>p.y);
+  const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+  view.cx=(minX+maxX)/2; view.cy=(minY+maxY)/2;
+  const pad=88;   // room for the widest screen-space fan
+  view.scale=Math.min((W-pad*2)/Math.max(300,maxX-minX),(H-pad*2)/Math.max(300,maxY-minY));
+  view.scale=Math.min(view.scale,0.45);
+  drawAll();
+}
+
+function drawGrid(){
+  gGrid.textContent="";
+  const stepM=250*Math.pow(2,Math.round(Math.log2(0.14/view.scale)));
+  const c=cssv("--map-grid");
+  const tl=unproj(0,0), br=unproj(W,H);
+  const m0=toM(tl.lat,tl.lng), m1=toM(br.lat,br.lng);
+  for(let x=Math.floor(m0.x/stepM)*stepM;x<=m1.x;x+=stepM){
+    const p=(x-view.cx)*view.scale+W/2;
+    gGrid.appendChild(el("line",{x1:p,y1:0,x2:p,y2:H,stroke:c,"stroke-width":1}));
+  }
+  for(let y=Math.floor(m0.y/stepM)*stepM;y<=m1.y;y+=stepM){
+    const p=(y-view.cy)*view.scale+H/2;
+    gGrid.appendChild(el("line",{x1:0,y1:p,x2:W,y2:p,stroke:c,"stroke-width":1}));
+  }
+  const px=stepM*view.scale;
+  document.getElementById("scaleTxt").textContent = stepM>=1000?(stepM/1000)+"km":stepM+"m";
+  document.getElementById("scaleBar").style.width=Math.round(px)+"px";
+}
+
+/* Town names are the only geographic reference this map has, so they matter
+   most when zoomed out — but they must not pile on top of each other. Place
+   greedily, towns containing a nursery first, skipping any that would collide. */
+const TOWNS_WITH_PARKS=new Set(DATA.map(d=>d.town).filter(Boolean));
+const CHOME_ORDERED=[...CHOME].sort((a,b)=>
+  (TOWNS_WITH_PARKS.has(b.town)?1:0)-(TOWNS_WITH_PARKS.has(a.town)?1:0));
+
+const markerRadius = () => 12*Math.max(0.56,Math.min(1.1,view.scale/0.17));
+
+function markerBoxes(){
+  const r=markerRadius(), out=[];
+  for(const d of DATA){
+    const L=LAYOUT.get(d.id);
+    if(!L) continue;
+    const b=proj(L.lat,L.lng);
+    out.push({x:b.x+L.dx-r,y:b.y+L.dy-r,w:r*2,h:r*2});
+  }
+  return out;
+}
+const hits=(a,b)=>a.x<b.x+b.w && a.x+a.w>b.x && a.y<b.y+b.h && a.y+a.h>b.y;
+
+/* How far a town's markers reach from its centroid, so its own label can be
+   pushed clear of them instead of being rejected by its own fan. */
+function townReach(town){
+  const r=markerRadius();
+  let n=0;
+  for(const d of DATA) if(d.town===town && LAYOUT.get(d.id)) n++;
+  if(!n) return 0;
+  if(n===1) return r;
+  return Math.max(r+4,(r*2+5)/(2*Math.sin(Math.PI/n)))+r;
+}
+
+function drawChome(){
+  gChome.textContent="";
+  if(view.scale<0.028) return;
+  const fill=cssv("--ink-faint");
+  const fs=Math.max(8.5,Math.min(11,7+view.scale*22));
+  const placed=markerBoxes();            // never write a label over a marker
+  const farOK=view.scale>0.09;           // outlying towns only once zoomed in
+  for(const c of CHOME_ORDERED){
+    if(!farOK && !TOWNS_WITH_PARKS.has(c.town)) continue;
+    const p=proj(c.lat,c.lng);
+    if(p.x<-70||p.x>W+70||p.y<-40||p.y>H+40) continue;
+    const label=c.town.replace(/([一二三四五六七八九十]+)丁目/,"$1");
+    const w=label.length*fs*0.98, h=fs*1.25, d=townReach(c.town)+5;
+    const cands=[
+      {x:p.x+d,        y:p.y-h/2,   a:"start"},
+      {x:p.x-w/2,      y:p.y+d,     a:"middle"},
+      {x:p.x-w/2,      y:p.y-d-h,   a:"middle"},
+      {x:p.x-d-w,      y:p.y-h/2,   a:"end"}
+    ];
+    const spot=cands.find(k=>!placed.some(q=>hits({x:k.x,y:k.y,w:w,h:h},q)));
+    if(!spot) continue;
+    placed.push({x:spot.x,y:spot.y,w:w,h:h});
+    const tx = spot.a==="start" ? spot.x : spot.a==="end" ? spot.x+w : spot.x+w/2;
+    gChome.append(
+      el("circle",{cx:p.x,cy:p.y,r:1.7,fill:fill,opacity:.5}),
+      Object.assign(el("text",{x:tx,y:spot.y+fs*0.95,class:"chomelabel",
+        "text-anchor":spot.a,fill:fill,opacity:.9,"font-size":fs}),{textContent:label})
+    );
+  }
+}
+
+function drawRings(){
+  gRings.textContent="";
+  if(!origin) return;
+  const p=proj(origin.lat,origin.lng);
+  const c=cssv("--accent");
+  [500,1000,1500,2000].forEach(m=>{
+    const r=m*view.scale;
+    if(r<14||r>Math.max(W,H)*1.5) return;
+    gRings.appendChild(el("circle",{cx:p.x,cy:p.y,r:r,fill:"none",stroke:c,"stroke-width":1,
+      "stroke-dasharray":"4 5",opacity:.42}));
+    const t=el("text",{x:p.x,y:p.y-r-4,class:"ringlabel","text-anchor":"middle",fill:c});
+    t.textContent = m>=1000?(m/1000)+"km":m+"m";
+    gRings.appendChild(t);
+  });
+}
+
+function drawOrigin(){
+  gOrigin.textContent="";
+  if(!origin) return;
+  const p=proj(origin.lat,origin.lng);
+  const c=cssv("--accent"), ink=cssv("--accent-ink");
+  gOrigin.appendChild(el("circle",{cx:p.x,cy:p.y,r:13,fill:c,opacity:.18}));
+  gOrigin.appendChild(el("circle",{cx:p.x,cy:p.y,r:7.5,fill:c,stroke:ink,"stroke-width":2.5}));
+  const t=el("text",{x:p.x,y:p.y-16,"text-anchor":"middle",class:"ringlabel",fill:c});
+  t.textContent="起点";
+  gOrigin.appendChild(t);
+}
+
+function drawMarkers(){
+  LAYOUT=layout();
+  if(mapMode==="google"){ syncGoogleMarkers(); return; }
+  gMk.textContent="";
+  const vis=new Set(visible().map(d=>d.id));
+  const ink=cssv("--surface");
+  const faint=cssv("--ink-faint");
+  const anchors=el("g"), pins=el("g");
+  gMk.append(anchors,pins);
+
+  /* Markers grow with the zoom: small colour-coded dots give a readable
+     overview, and they only become labelled pills once there is room. */
+  const rBase=markerRadius();
+  const showNum=rBase>=8.6;
+
+  const seen=new Set();
+  const ordered=[...DATA].sort((a,b)=>(a.id===selId)-(b.id===selId));
+  for(const d of ordered){
+    const L=LAYOUT.get(d.id);
+    if(!L) continue;
+    const on=vis.has(d.id), sel=d.id===selId;
+    const base=proj(L.lat,L.lng);
+    const r=sel?rBase*1.3:rBase;
+    const x=base.x+L.dx, y=base.y+L.dy;
+    if(x<-50||x>W+50||y<-50||y>H+50) continue;
+
+    if(L.n>1){
+      if(!seen.has(d.town)){
+        seen.add(d.town);
+        anchors.appendChild(el("circle",{cx:base.x,cy:base.y,r:2,fill:faint,opacity:.55}));
+      }
+      anchors.appendChild(el("line",{x1:base.x,y1:base.y,x2:x,y2:y,
+        stroke:faint,"stroke-width":1,opacity:on?.35:.1}));
+    }
+
+    const col=cssv(d.band.c);
+    const g=el("g",{class:"mk",tabindex:on?0:-1,role:"button"});
+    g.setAttribute("opacity", on?1:0.16);
+    if(sel) g.appendChild(el("circle",{cx:x,cy:y,r:r+7,fill:col,opacity:.22}));
+    g.appendChild(el("circle",{cx:x,cy:y,r:r,fill:col,stroke:ink,
+      "stroke-width":sel?2.8:(rBase<8?1.4:2)}));
+    if(showNum||sel){
+      const fs=(sel?r*0.82:r*0.84);
+      const t=el("text",{x:x,y:y+fs*0.36,"text-anchor":"middle","font-size":fs,fill:ink});
+      t.textContent = d.ratio!=null ? d.ratio.toFixed(1) : "?";
+      g.appendChild(t);
+    }
+    if(sel){
+      const nm=el("text",{x:x,y:y-r-7,"text-anchor":"middle","font-size":11.5,
+        "font-weight":700,fill:cssv("--ink"),stroke:cssv("--surface"),"stroke-width":3.5,
+        "paint-order":"stroke"});
+      nm.textContent=d.name;
+      g.appendChild(nm);
+    }
+    g.appendChild(el("circle",{cx:x,cy:y,r:Math.max(r,14),class:"hit"}));
+    const ttl=el("title");
+    ttl.textContent=d.name+(d.ratio!=null?`（${d.ratio.toFixed(1)}倍）`:"（倍率データなし）");
+    g.appendChild(ttl);
+    g.addEventListener("click",e=>{e.stopPropagation();select(d.id,false);});
+    g.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();select(d.id,false);}});
+    pins.appendChild(g);
+  }
+}
+function drawAll(){ LAYOUT=layout(); drawGrid(); drawChome(); drawRings(); drawMarkers(); drawOrigin(); }
+
+/* ---------- map interaction ---------- */
+/* Pointer capture is taken only once a pan actually begins. Capturing on
+   pointerdown would retarget the follow-up `click` to the <svg>, and marker
+   taps would never reach their handler. */
+let drag=null, pointers=new Map(), pinch=null;
+const capture=id=>{ try{ svg.setPointerCapture(id); }catch(_){} };
+svg.addEventListener("pointerdown",e=>{
+  pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(pointers.size===2){
+    const [a,b]=[...pointers.values()];
+    pinch={d:Math.hypot(a.x-b.x,a.y-b.y)||1,scale:view.scale};
+    drag=null; capture(e.pointerId);
+  }else{
+    drag={x:e.clientX,y:e.clientY,cx:view.cx,cy:view.cy,t:Date.now(),moved:0,cap:false};
+  }
+});
+svg.addEventListener("pointermove",e=>{
+  if(!pointers.has(e.pointerId)) return;
+  pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(pinch && pointers.size===2){
+    const [a,b]=[...pointers.values()];
+    const nd=Math.hypot(a.x-b.x,a.y-b.y);
+    view.scale=Math.max(0.02,Math.min(1.6,pinch.scale*(nd/pinch.d)));
+    drawAll(); return;
+  }
+  if(!drag) return;
+  const dx=e.clientX-drag.x, dy=e.clientY-drag.y;
+  drag.moved=Math.max(drag.moved,Math.hypot(dx,dy));
+  if(!drag.cap){
+    if(drag.moved<6) return;               // still a tap — leave it alone
+    drag.cap=true; svg.classList.add("dragging"); capture(e.pointerId);
+  }
+  view.cx=drag.cx-dx/view.scale; view.cy=drag.cy-dy/view.scale;
+  drawAll();
+});
+function endPointer(e){
+  const wasDrag=drag;
+  pointers.delete(e.pointerId);
+  if(pointers.size<2) pinch=null;
+  if(pointers.size===0){
+    svg.classList.remove("dragging");
+    if(wasDrag && wasDrag.moved<6 && Date.now()-wasDrag.t<500 && pickMode){
+      const r=svg.getBoundingClientRect();
+      const ll=unproj(e.clientX-r.left, e.clientY-r.top);
+      setOrigin(ll.lat,ll.lng,"地図で指定した地点","map");
+      setPick(false);
+    }
+    drag=null;
+  }
+}
+svg.addEventListener("pointerup",endPointer);
+svg.addEventListener("pointercancel",endPointer);
+svg.addEventListener("wheel",e=>{
+  e.preventDefault();
+  const r=svg.getBoundingClientRect();
+  const mx=e.clientX-r.left, my=e.clientY-r.top;
+  const before=unproj(mx,my);
+  view.scale=Math.max(0.02,Math.min(1.6,view.scale*Math.exp(-e.deltaY*0.0015)));
+  const after=unproj(mx,my);
+  const bm=toM(before.lat,before.lng), am=toM(after.lat,after.lng);
+  view.cx+=bm.x-am.x; view.cy+=bm.y-am.y;
+  drawAll();
+},{passive:false});
+
+function zoomBy(f){
+  view.scale=Math.max(0.02,Math.min(1.6,view.scale*f));
+  drawAll();
+}
+document.getElementById("zIn").addEventListener("click",()=>zoomBy(1.45));
+document.getElementById("zOut").addEventListener("click",()=>zoomBy(1/1.45));
+document.getElementById("zFit").addEventListener("click",fitAll);
+
+function centerOn(lat,lng,minScale){
+  const m=toM(lat,lng);
+  view.cx=m.x; view.cy=m.y;
+  if(minScale && view.scale<minScale) view.scale=minScale;
+  drawAll();
+}
+
+/* ---------- detail ---------- */
+const detail=document.getElementById("detail"), scrim=document.getElementById("scrim");
+function select(id,pan){
+  selId=id;
+  const d=DATA.find(x=>x.id===id); if(!d) return;
+  document.querySelectorAll(".card").forEach(c=>{
+    if(c.dataset.id===id) c.setAttribute("aria-current","true"); else c.removeAttribute("aria-current");
+  });
+  const pp=posOf(d);
+  if(mapMode==="google"){
+    if(pan && pp && gmap){
+      gmap.panTo({lat:pp.lat,lng:pp.lng});
+      if(gmap.getZoom()<16) gmap.setZoom(16);
+    }
+    syncGoogleMarkers();
+  }else{
+    if(pan && pp) centerOn(pp.lat,pp.lng,0.22); else drawMarkers();
+  }
+  openDetail(d);
+}
+function gmapsSearch(d){
+  return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(d.name+" "+shortAddr(d.address));
+}
+function gmapsDir(d,mode){
+  const dest=encodeURIComponent(d.name+" "+shortAddr(d.address));
+  let u="https://www.google.com/maps/dir/?api=1&destination="+dest+"&travelmode="+mode;
+  if(origin){
+    const o = origin.kind==="chome" ? origin.label : (origin.lat.toFixed(6)+","+origin.lng.toFixed(6));
+    u+="&origin="+encodeURIComponent(o);
+  }
+  return u;
+}
+function openDetail(d){
+  const b=d.band;
+  document.getElementById("dName").textContent=d.name;
+  document.getElementById("dAddr").textContent=shortAddr(d.address);
+  const body=document.getElementById("dBody");
+  body.textContent="";
+
+  const hero=document.createElement("div");
+  hero.className="dhero";
+  hero.style.setProperty("--bc",`var(${b.c})`);
+  hero.style.setProperty("--bsoft",`var(${b.s})`);
+  hero.innerHTML =
+    `<div><div class="hv">${d.ratio!=null?d.ratio.toFixed(2)+"<span style='font-size:16px'>倍</span>":"–"}</div>`
+    + `<div class="hl">${d.ratio!=null?"0歳児クラス 一次申請倍率／"+b.tone:"倍率データなし"}</div></div>`
+    + (d.apply0!=null&&d.cap0!=null
+        ? `<div class="hr">申込 <b>${d.apply0}</b> 名<br>定員 <b>${d.cap0}</b> 名</div>` : "");
+  body.appendChild(hero);
+
+  const dist=distOf(d);
+  if(dist){
+    const s=document.createElement("div"); s.className="sec";
+    s.innerHTML=`<div class="sl">起点「${escapeHtml(origin.label)}」から</div>`
+      + (dist.near
+        ? `<div class="grid2">`
+          +`<div class="cell"><div class="cn">徒歩圏内</div><div class="cl">起点と同じ町丁目のため</div></div>`
+          +`<div class="cell"><div class="cn">ごく近距離</div><div class="cl">目安を出すには近すぎます</div></div>`
+          +`</div><div class="note">起点とこの園は同じ町丁目の代表点にあり、両者の位置誤差より近いため、分単位の目安は出していません。実際の所要時間は下の「ルート」から確認してください。</div>`
+        : `<div class="grid2">`
+          +`<div class="cell"><div class="cn">徒歩 ${dist.walk}分</div><div class="cl">道のり 約${fmtKm(dist.road)}</div></div>`
+          +`<div class="cell"><div class="cn">自転車 ${dist.bike}分</div><div class="cl">直線 約${fmtKm(dist.straight)}</div></div>`
+          +`</div><div class="note">直線距離に道のり係数1.3を掛けた概算です。実際の所要時間は下の「ルート」から確認してください。</div>`);
+    body.appendChild(s);
+  }
+
+  const g=document.createElement("div"); g.className="sec";
+  g.innerHTML=`<div class="sl">園の規模</div><div class="grid2">`
+    +`<div class="cell"><div class="cn">${d.type}</div><div class="cl">種別（定員からの推定）</div></div>`
+    +`<div class="cell"><div class="cn">${d.capacity??"–"}</div><div class="cl">総定員数</div></div>`
+    +`<div class="cell"><div class="cn">${d.staff??"–"}</div><div class="cl">職員数</div></div>`
+    +`<div class="cell"><div class="cn">${d.parking??"–"}</div><div class="cl">駐車場</div></div>`
+    +`</div>`;
+  body.appendChild(g);
+
+  const h=document.createElement("div"); h.className="sec";
+  h.innerHTML=`<div class="sl">開園時間</div><div class="sv">${escapeHtml(d.hours||"情報なし")}</div>`;
+  body.appendChild(h);
+
+  if(d.policy){
+    const p=document.createElement("div"); p.className="sec";
+    p.innerHTML=`<div class="sl">保育・教育方針</div><div class="policy">${escapeHtml(d.policy)}</div>`;
+    body.appendChild(p);
+  }
+
+  const l=document.createElement("div"); l.className="sec";
+  const tel=d.tel?d.tel.replace(/[^\d+]/g,""):null;
+  l.innerHTML=`<div class="sl">地図・ルート</div><div class="links">`
+    +`<div class="lrow">`
+    +`<a class="lnk pri" href="${gmapsSearch(d)}" target="_blank" rel="noopener">Googleマップで見る</a>`
+    +`</div><div class="lrow">`
+    +`<a class="lnk" href="${gmapsDir(d,"walking")}" target="_blank" rel="noopener">ルート・徒歩</a>`
+    +`<a class="lnk" href="${gmapsDir(d,"bicycling")}" target="_blank" rel="noopener">ルート・自転車</a>`
+    +`</div></div>`
+    +`<div class="sl" style="margin-top:14px;">園の情報</div><div class="links">`
+    +`<div class="lrow">`
+    +(d.enmikke
+      ? `<a class="lnk pri" href="${escapeAttr(d.enmikke)}" target="_blank" rel="noopener">えんさがしサポート</a>`
+      : `<span class="lnk off">えんさがしサポート 掲載なし</span>`)
+    +`</div><div class="lrow">`
+    +(tel?`<a class="lnk" href="tel:${tel}">${escapeHtml(d.tel)}</a>`:`<span class="lnk off">電話番号なし</span>`)
+    +(d.url?`<a class="lnk" href="${escapeAttr(d.url)}" target="_blank" rel="noopener">公式サイト</a>`:`<span class="lnk off">サイトなし</span>`)
+    +`</div></div>`
+    +`<div class="note">${
+      (posOf(d)||{}).exact
+        ? "この位置は住所をGoogleで照合した結果です。"
+        : `この地図の位置は住所の${d.prec==="town"?"町（丁目の区分なし）":"町丁目"}の代表点で、${d.prec==="town"?"数百m":"100〜300m程度"}ずれることがあります。`
+    }正確な位置は「Googleマップで見る」から確認してください。</div>`;
+  body.appendChild(l);
+
+  detail.classList.add("on"); detail.setAttribute("aria-hidden","false");
+  if(window.matchMedia("(max-width:900px)").matches) scrim.classList.add("on");
+  body.scrollTop=0;
+}
+function closeDetail(){
+  detail.classList.remove("on"); detail.setAttribute("aria-hidden","true");
+  scrim.classList.remove("on");
+  selId=null;
+  document.querySelectorAll(".card").forEach(c=>c.removeAttribute("aria-current"));
+  drawMarkers();
+}
+document.getElementById("dClose").addEventListener("click",closeDetail);
+scrim.addEventListener("click",closeDetail);
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){ if(detail.classList.contains("on")) closeDetail(); else if(pickMode) setPick(false); }
+});
+const escapeHtml=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const escapeAttr=s=>escapeHtml(s).replace(/`/g,"&#96;");
+
+/* ---------- origin ---------- */
+const oStat=document.getElementById("oStat");
+function refreshMap(){ if(mapMode==="google") syncGoogleMarkers(); else drawAll(); }
+
+function setOrigin(lat,lng,label,kind){
+  origin={lat,lng,label,kind,exact:kind!=="chome"};
+  oStat.innerHTML=`起点：<b>${escapeHtml(label)}</b><br>各園の徒歩・自転車の目安を表示しています。`;
+  oStat.classList.add("ok");
+  document.getElementById("oClr").classList.add("on");
+  try{ localStorage.setItem("hk_origin",JSON.stringify(origin)); }catch(e){}
+  render(); refreshMap();
+}
+function clearOrigin(){
+  origin=null;
+  document.getElementById("oq").value="";
+  document.getElementById("oClr").classList.remove("on");
+  oStat.classList.remove("ok");
+  oStat.textContent="起点を決めると、園ごとの徒歩・自転車の目安と距離順の並べ替えが使えます。";
+  try{ localStorage.removeItem("hk_origin"); }catch(e){}
+  render(); refreshMap();
+}
+document.getElementById("oClr").addEventListener("click",clearOrigin);
+
+function setPick(on){
+  pickMode=on;
+  document.getElementById("btnPick").setAttribute("aria-pressed",String(on));
+  document.getElementById("mapHint").classList.toggle("on",on);
+  svg.classList.toggle("picking",on);
+  gMk.style.pointerEvents = on ? "none" : "";   // taps set the origin, not a park
+}
+document.getElementById("btnPick").addEventListener("click",()=>setPick(!pickMode));
+document.getElementById("btnGeo").addEventListener("click",()=>{
+  if(!navigator.geolocation){ oStat.textContent="この端末では現在地を取得できません。住所を入力するか、地図をタップして指定してください。"; return; }
+  oStat.textContent="現在地を取得しています…";
+  navigator.geolocation.getCurrentPosition(
+    p=>{ setOrigin(p.coords.latitude,p.coords.longitude,"現在地","geo"); centerOn(p.coords.latitude,p.coords.longitude,0.16); },
+    ()=>{ oStat.classList.remove("ok"); oStat.textContent="現在地を取得できませんでした。位置情報の許可を確認するか、住所を入力してください。"; },
+    {enableHighAccuracy:true,timeout:10000}
+  );
+});
+
+/* chome autocomplete = the "address" input, working without any network */
+const oq=document.getElementById("oq"), acList=document.getElementById("acList");
+const KANJI_NUM={"一":1,"二":2,"三":3,"四":4,"五":5,"六":6,"七":7,"八":8,"九":9};
+function normQuery(s){
+  s=s.normalize("NFKC").trim()
+     .replace(/[−－ー―]/g,"-")
+     .replace(/^神奈川県/,"").replace(/^横浜市/,"").replace(/^港北区/,"");
+  s=s.replace(/(\d+)\s*(丁目|-)?/g,(m,n)=>{
+    const k=["","一","二","三","四","五","六","七","八","九"][+n];
+    return k?k+"丁目":m;
+  });
+  return s;
+}
+function acSearch(raw){
+  const s=raw.trim(); if(!s) return [];
+  const n=normQuery(s);
+  const bare=s.normalize("NFKC").replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0));
+  const hits=CHOME.filter(c=>c.town.includes(n)||c.town.includes(bare)||n.includes(c.town));
+  return hits.slice(0,8);
+}
+let acIdx=-1, acHits=[];
+function renderAc(){
+  acList.textContent="";
+  if(!acHits.length){ acList.classList.remove("on"); return; }
+  acHits.forEach((c,i)=>{
+    const it=document.createElement("div");
+    it.className="acitem"+(i===acIdx?" hi":"");
+    it.textContent="港北区 "+c.town;
+    it.addEventListener("mousedown",e=>{e.preventDefault();chooseAc(i);});
+    acList.appendChild(it);
+  });
+  acList.classList.add("on");
+}
+function chooseAc(i){
+  const c=acHits[i]; if(!c) return;
+  oq.value="港北区 "+c.town;
+  acList.classList.remove("on"); acHits=[]; acIdx=-1;
+  setOrigin(c.lat,c.lng,"横浜市港北区"+c.town,"chome");
+  centerOn(c.lat,c.lng,0.16);
+}
+oq.addEventListener("input",()=>{
+  document.getElementById("oClr").classList.toggle("on",!!oq.value||!!origin);
+  acHits=acSearch(oq.value); acIdx=acHits.length?0:-1; renderAc();
+});
+oq.addEventListener("keydown",e=>{
+  if(e.key==="Enter"){
+    e.preventDefault();
+    const raw=oq.value.trim();
+    if(mapMode==="google"&&raw){ acList.classList.remove("on"); acHits=[]; geocodeOrigin(raw); }
+    else if(acHits.length) chooseAc(acIdx<0?0:acIdx);
+    return;
+  }
+  if(!acHits.length) return;
+  if(e.key==="ArrowDown"){e.preventDefault();acIdx=(acIdx+1)%acHits.length;renderAc();}
+  else if(e.key==="ArrowUp"){e.preventDefault();acIdx=(acIdx-1+acHits.length)%acHits.length;renderAc();}
+  else if(e.key==="Escape"){acList.classList.remove("on");acHits=[];}
+});
+oq.addEventListener("blur",()=>setTimeout(()=>acList.classList.remove("on"),120));
+
+/* ---------- search / sort ---------- */
+const qEl=document.getElementById("q");
+qEl.addEventListener("input",()=>{
+  q=qEl.value.trim();
+  document.getElementById("qClr").classList.toggle("on",!!q);
+  render();
+});
+document.getElementById("qClr").addEventListener("click",()=>{
+  qEl.value=""; q=""; document.getElementById("qClr").classList.remove("on"); render(); qEl.focus();
+});
+document.getElementById("sort").addEventListener("change",e=>{ sortBy=e.target.value; render(); });
+
+/* ============================================================
+   CSV EXPORT — Google マイマップ has no filter of its own, so the way to see
+   a filtered subset there is to export exactly what is on screen and import
+   that. Columns are named so マイマップ can pick them up directly.
+   ============================================================ */
+const csvCell=v=>{
+  const s=v==null?"":String(v);
+  return /[",\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s;
+};
+function buildCsv(items){
+  const head=["園名","住所","緯度","経度","倍率","倍率帯","種別","0歳児定員","申込数",
+              "総定員","職員数","駐車場","徒歩の目安(分)","自転車の目安(分)","直線距離(m)",
+              "位置の精度","開園時間","電話","保育方針","えんさがしサポート","公式サイト"];
+  const lines=[head.join(",")];
+  for(const d of items){
+    const p=posOf(d), dd=distOf(d);
+    lines.push([
+      d.name, shortAddr(d.address),
+      p?p.lat.toFixed(6):"", p?p.lng.toFixed(6):"",
+      d.ratio!=null?d.ratio.toFixed(2):"",
+      d.band===BAND_ND?"データなし":`${d.band.label}(${d.band.tone})`,
+      d.type, d.cap0??"", d.apply0??"", d.capacity??"", d.staff??"", d.parking??"",
+      dd?(dd.near?"":dd.walk):"", dd?(dd.near?"":dd.bike):"", dd?Math.round(dd.straight):"",
+      p&&p.exact?"住所から取得":(d.prec==="town"?"町の代表点(誤差 数百m)":"町丁目の代表点(誤差 100〜300m)"),
+      d.hours??"", d.tel??"", d.policy??"", d.enmikke??"", d.url??""
+    ].map(csvCell).join(","));
+  }
+  return "﻿"+lines.join("\r\n")+"\r\n";   // BOM keeps Excel from mojibake
+}
+async function exportCsv(){
+  const items=visible();
+  if(!items.length) return;
+  const csv=buildCsv(items);
+  const name = fWalk ? `hoikuen-walk${fWalk}min.csv` : "hoikuen-selection.csv";
+  if(window.claude&&window.claude.downloads){
+    try{ await window.claude.downloads.save({filename:name,data:csv}); return; }
+    catch(e){ if(e&&e.code==="declined") return; /* else fall back */ }
+  }
+  const url=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));
+  const a=document.createElement("a");
+  a.href=url; a.download=name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+document.getElementById("exportBtn").addEventListener("click",exportCsv);
+
+/* ============================================================
+   GOOGLE MAPS MODE
+   Needs a Maps JavaScript API key and an outbound connection, so it only
+   works in the downloaded file — the published page blocks every external
+   host. Any failure falls straight back to the built-in map.
+   ============================================================ */
+let mapMode="builtin", gKey="", gmap=null, gmMarkers={}, gmOrigin=null,
+    gmCircles=[], gLoading=false, gAuthFailed=false;
+try{ gKey=localStorage.getItem("hk_gkey")||""; }catch(e){}
+
+const gStat=document.getElementById("gStat");
+const gBadge=document.getElementById("gBadge"), gBadgeText=document.getElementById("gBadgeText");
+const badge=m=>{ if(m){ gBadgeText.textContent=m; gBadge.classList.add("on"); } else gBadge.classList.remove("on"); };
+const setGStat=(m,c)=>{ gStat.textContent=m||""; gStat.className="gstat"+(c?" "+c:""); };
+
+function loadGoogleScript(key){
+  return new Promise((resolve,reject)=>{
+    if(window.google&&window.google.maps){ resolve(); return; }
+    let settled=false;
+    const done=fn=>(v)=>{ if(!settled){ settled=true; fn(v); } };
+    const ok=done(resolve), bad=done(reject);
+    window.__hkGmapReady=()=>ok();
+    window.gm_authFailure=()=>{
+      gAuthFailed=true;
+      setGStat("APIキーが拒否されました。①「Maps JavaScript API」が有効か ②キーのAPI制限にそれが入っているか "+
+               "③キーのリファラー制限（ファイルを直接開く場合は「なし」でないと弾かれます）④請求先アカウントの紐付け、"+
+               "の4点を確認してください。","err");
+      useBuiltin();
+    };
+    const s=document.createElement("script");
+    s.async=true;
+    s.src="https://maps.googleapis.com/maps/api/js?key="+encodeURIComponent(key)+
+          "&language=ja&region=JP&callback=__hkGmapReady";
+    s.onerror=()=>bad(new Error("blocked"));
+    setTimeout(()=>bad(new Error("timeout")),20000);
+    document.head.appendChild(s);
+  });
+}
+
+function useBuiltin(){
+  mapMode="builtin";
+  document.getElementById("gmap").classList.remove("on");
+  svg.classList.remove("off");
+  syncMapChips();
+  badge(null);
+  requestAnimationFrame(()=>{ resize(); drawAll(); });
+}
+
+function buildGoogleMap(){
+  const center = origin ? {lat:origin.lat,lng:origin.lng} : {lat:35.5205,lng:139.6270};
+  gmap=new google.maps.Map(document.getElementById("gmap"),{
+    center, zoom:14, mapTypeControl:false, streetViewControl:false,
+    fullscreenControl:false, clickableIcons:false,
+    zoomControlOptions:{position:google.maps.ControlPosition.RIGHT_BOTTOM}
+  });
+  gmap.addListener("click",e=>{
+    if(!pickMode) return;
+    setOrigin(e.latLng.lat(),e.latLng.lng(),"地図で指定した地点","map");
+    setPick(false);
+  });
+  gmMarkers={}; gmOrigin=null; gmCircles=[];
+  syncGoogleMarkers();
+  fitGoogle();
+}
+
+function gIcon(d,sel){
+  const col=cssv(d.band.c);
+  return {
+    path: google.maps.SymbolPath.CIRCLE,
+    fillColor: col, fillOpacity: 1,
+    strokeColor: cssv("--surface"), strokeWeight: sel?3:2,
+    scale: sel?15:12
+  };
+}
+
+function syncGoogleMarkers(){
+  if(!gmap||!window.google) return;
+  const vis=new Set(visible().map(d=>d.id));
+  for(const d of DATA){
+    const p=posOf(d);
+    let mk=gmMarkers[d.id];
+    if(!p){ if(mk){ mk.setMap(null); delete gmMarkers[d.id]; } continue; }
+    const sel=d.id===selId;
+    if(!mk){
+      mk=new google.maps.Marker({
+        map:gmap, title:d.name+(d.ratio!=null?`（${d.ratio.toFixed(1)}倍）`:""),
+        position:{lat:p.lat,lng:p.lng}
+      });
+      mk.addListener("click",()=>select(d.id,false));
+      gmMarkers[d.id]=mk;
+    }
+    mk.setPosition({lat:p.lat,lng:p.lng});
+    mk.setIcon(gIcon(d,sel));
+    mk.setLabel({
+      text: d.ratio!=null?d.ratio.toFixed(1):"?",
+      color: cssv("--surface"), fontSize: sel?"12px":"10px", fontWeight:"700"
+    });
+    mk.setOpacity(vis.has(d.id)?1:0.25);
+    mk.setZIndex(sel?999:(vis.has(d.id)?10:1));
+  }
+  syncGoogleOrigin();
+}
+
+function syncGoogleOrigin(){
+  if(!gmap||!window.google) return;
+  gmCircles.forEach(c=>c.setMap(null)); gmCircles=[];
+  if(!origin){ if(gmOrigin){ gmOrigin.setMap(null); gmOrigin=null; } return; }
+  const pos={lat:origin.lat,lng:origin.lng};
+  if(!gmOrigin){
+    gmOrigin=new google.maps.Marker({map:gmap,title:"起点："+origin.label,zIndex:1000});
+  }
+  gmOrigin.setPosition(pos);
+  gmOrigin.setTitle("起点："+origin.label);
+  gmOrigin.setIcon({
+    path:google.maps.SymbolPath.CIRCLE, fillColor:cssv("--accent"), fillOpacity:1,
+    strokeColor:cssv("--accent-ink"), strokeWeight:3, scale:9
+  });
+  [500,1000,1500,2000].forEach(m=>{
+    gmCircles.push(new google.maps.Circle({
+      map:gmap, center:pos, radius:m, clickable:false,
+      strokeColor:cssv("--accent"), strokeOpacity:.45, strokeWeight:1,
+      fillOpacity:0
+    }));
+  });
+}
+
+function fitGoogle(){
+  if(!gmap||!window.google) return;
+  const b=new google.maps.LatLngBounds();
+  let n=0;
+  for(const d of DATA){ const p=posOf(d); if(p){ b.extend({lat:p.lat,lng:p.lng}); n++; } }
+  if(origin) b.extend({lat:origin.lat,lng:origin.lng});
+  if(n) gmap.fitBounds(b,48);
+}
+
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+
+/* One-time pass: ask Google for each address, cache locally. This is what
+   lifts positions from "somewhere in this town" to the actual building. */
+async function geocodeWithGoogle(){
+  const todo=DATA.filter(d=>!GEOCACHE[d.address]);
+  if(!todo.length){ badge(null); return; }
+  const gc=new google.maps.Geocoder();
+  let ok=0, fail=0, retries=8;
+  for(let i=0;i<todo.length;i++){
+    const d=todo[i];
+    badge(`住所を照合中… ${i+1}/${todo.length}`);
+    try{
+      const res=await gc.geocode({address:d.address,region:"JP"});
+      const loc=res.results&&res.results[0]&&res.results[0].geometry.location;
+      if(loc){ GEOCACHE[d.address]={lat:loc.lat(),lng:loc.lng()}; ok++; saveGeo(); }
+      else fail++;
+    }catch(e){
+      const code=String((e&&(e.code||e.message))||e);
+      /* Enabling Maps JavaScript API but forgetting Geocoding API is the
+         usual setup slip — say so instead of failing 44 times in silence. */
+      if(code.includes("REQUEST_DENIED")){
+        badge(null);
+        setGStat("住所の照合が拒否されました。Google Cloud で「Geocoding API」を有効にし、"+
+                 "APIキーの制限にも Geocoding API が含まれているか確認してください。"+
+                 "地図の表示自体はこのまま使えます（位置は町丁目の代表点のまま）。","err");
+        syncGoogleMarkers(); render();
+        return;
+      }
+      if(code.includes("OVER_QUERY_LIMIT") && retries>0){
+        retries--; i--;              // same address again, after a pause
+        await sleep(1600);
+        continue;
+      }
+      fail++;
+    }
+    if(i%6===5){ syncGoogleMarkers(); render(); }
+    await sleep(140);
+  }
+  badge(null);
+  syncGoogleMarkers(); fitGoogle(); render();
+  fitAll();   // positions moved, so the built-in view must be re-framed too
+  setGStat(`${exactCount()}／${DATA.length} 園の位置を住所から正確に取得しました。`
+    + (fail?`（${fail} 件は取得できず、町丁目の代表点のままです）`:""), "ok");
+}
+
+async function useGoogle(){
+  if(gLoading) return;
+  if(!gKey){
+    document.getElementById("gkeyBox").classList.add("on");
+    setGStat("Googleマップを表示するには APIキーが必要です。","");
+    syncMapChips();
+    return;
+  }
+  gLoading=true;
+  setGStat("Googleマップを読み込んでいます…","");
+  try{
+    await loadGoogleScript(gKey);
+    if(gAuthFailed) return;
+    mapMode="google";
+    document.getElementById("gkeyBox").classList.remove("on");
+    document.getElementById("gmap").classList.add("on");
+    svg.classList.add("off");
+    syncMapChips();
+    if(!gmap) buildGoogleMap(); else { syncGoogleMarkers(); fitGoogle(); }
+    google.maps.event.trigger(gmap,"resize");
+    setGStat("","");
+    await geocodeWithGoogle();
+  }catch(err){
+    const why = err&&err.message==="blocked"
+      ? "この共有ページは外部への接続が遮断されているため、Googleマップを読み込めません。ダウンロードした hoikuen-map.html を開いて使ってください。"
+      : "Googleマップを読み込めませんでした。ネットワークとAPIキーを確認してください。";
+    setGStat(why,"err");
+    useBuiltin();
+  }finally{ gLoading=false; }
+}
+
+function syncMapChips(){
+  document.querySelectorAll("#chipsMap .chip").forEach(c=>
+    c.setAttribute("aria-pressed",String(c.dataset.m===mapMode)));
+}
+document.querySelectorAll("#chipsMap .chip").forEach(c=>{
+  c.addEventListener("click",()=>{ c.dataset.m==="google" ? useGoogle() : useBuiltin(); });
+});
+document.getElementById("gkeySave").addEventListener("click",()=>{
+  const v=document.getElementById("gkeyInput").value.trim();
+  if(!v){ setGStat("APIキーを入力してください。","err"); return; }
+  gKey=v; gAuthFailed=false;
+  try{ localStorage.setItem("hk_gkey",v); }catch(e){}
+  document.getElementById("gkeyInput").value="";
+  useGoogle();
+});
+document.getElementById("gkeyInput").addEventListener("keydown",e=>{
+  if(e.key==="Enter"){ e.preventDefault(); document.getElementById("gkeySave").click(); }
+});
+
+/* With Google available the origin box accepts a full street address. */
+async function geocodeOrigin(text){
+  if(mapMode!=="google"||!window.google||!window.google.maps) return false;
+  try{
+    setGStat("住所を検索しています…","");
+    const res=await new google.maps.Geocoder().geocode({address:text,region:"JP"});
+    const r=res.results&&res.results[0];
+    if(!r) { setGStat("その住所は見つかりませんでした。","err"); return false; }
+    const loc=r.geometry.location;
+    setOrigin(loc.lat(),loc.lng(),r.formatted_address.replace(/^日本、?\s*/,""),"gaddr");
+    if(gmap) gmap.panTo({lat:loc.lat(),lng:loc.lng()});
+    setGStat("","");
+    return true;
+  }catch(e){ setGStat("住所を検索できませんでした。","err"); return false; }
+}
+
+/* ---------- init ---------- */
+buildChips(); buildWalkChips(); buildLegend(); syncMapChips();
+if(gKey) setGStat("保存済みのAPIキーがあります。「Googleマップ」を選ぶと読み込みます。","");
+try{
+  const saved=JSON.parse(localStorage.getItem("hk_origin")||"null");
+  if(saved && typeof saved.lat==="number"){
+    origin=Object.assign({},saved,{exact: saved.exact!=null ? saved.exact : saved.kind!=="chome"});
+    oq.value = saved.kind==="chome" ? saved.label.replace(/^横浜市/,"") : saved.label;
+    oStat.innerHTML=`起点：<b>${escapeHtml(saved.label)}</b><br>各園の徒歩・自転車の目安を表示しています。`;
+    oStat.classList.add("ok");
+    document.getElementById("oClr").classList.add("on");
+  }
+}catch(e){}
+render();
+new ResizeObserver(()=>resize()).observe(document.getElementById("mapwrap"));
+resize(); fitAll();
+window.matchMedia("(prefers-color-scheme:dark)").addEventListener("change",()=>drawAll());
+new MutationObserver(()=>drawAll()).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+</script>
